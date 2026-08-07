@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="hero-bg-split">
         <div className="hero-bg-left"></div>
         <div className="hero-bg-right">
-          <img src="/hero_mockup.png" alt="Kusarkar Farm Vineyard" className="hero-right-bg-img" />
+          <img src="/hero_basket.png" alt="Fresh Fruits Basket at Kusarkar Farm" className="hero-right-bg-img" />
           <div className="hero-right-overlay"></div>
         </div>
       </div>
@@ -33,7 +33,7 @@ export const Hero = () => {
 
           <h1 className="hero-main-title">
             {t('hero.title1')}<br />
-            <span className="text-green-hero">{t('hero.title2')}</span>
+            <span className="text-green-hero highlight-line">{t('hero.title2')}</span>
           </h1>
 
           <p className="hero-desc">{t('hero.desc')}</p>
@@ -47,10 +47,10 @@ export const Hero = () => {
             </a>
           </div>
 
-          {/* 3 Feature Highlights Row */}
-          <div className="hero-features-row">
+          {/* 4 Feature Highlights Row */}
+          <div className="hero-features-row hero-4-features">
             <div className="h-feature">
-              <div className="hf-icon">🌱</div>
+              <div className="hf-icon">🌾</div>
               <div className="hf-text">
                 <strong>{t('hero.f1Title')}</strong>
                 <small>{t('hero.f1Sub')}</small>
@@ -58,7 +58,7 @@ export const Hero = () => {
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon">🌿</div>
+              <div className="hf-icon">🌱</div>
               <div className="hf-text">
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
@@ -70,6 +70,14 @@ export const Hero = () => {
               <div className="hf-text">
                 <strong>{t('hero.f3Title')}</strong>
                 <small>{t('hero.f3Sub')}</small>
+              </div>
+            </div>
+
+            <div className="h-feature">
+              <div className="hf-icon">🏡</div>
+              <div className="hf-text">
+                <strong>{t('hero.f4Title')}</strong>
+                <small>{t('hero.f4Sub')}</small>
               </div>
             </div>
           </div>
