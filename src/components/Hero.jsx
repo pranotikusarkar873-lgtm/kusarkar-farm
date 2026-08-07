@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="hero-bg-split">
         <div className="hero-bg-left"></div>
         <div className="hero-bg-right">
-          <img src="/kusarkar_hero_harvest.jpg" alt="Kusarkar Farm Harvest" className="hero-right-bg-img" />
+          <img src="/hero_farmer_harvest.jpg" alt="Farmer Harvesting Fresh Fruits at Kusarkar Farm" className="hero-right-bg-img" />
           <div className="hero-right-overlay"></div>
         </div>
       </div>
