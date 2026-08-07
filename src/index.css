@@ -283,7 +283,7 @@ ul {
 .hero-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(248, 250, 246, 0.97) 0%, rgba(248, 250, 246, 0.88) 38%, rgba(248, 250, 246, 0.35) 65%, transparent 92%);
+  background: linear-gradient(90deg, rgba(248, 250, 246, 0.92) 0%, rgba(248, 250, 246, 0.70) 25%, rgba(248, 250, 246, 0.15) 35%, transparent 42%);
 }
 
 .hero-tag-glass {
