@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="hero-bg-split">
         <div className="hero-bg-left"></div>
         <div className="hero-bg-right">
-          <img src="/hero_basket.png" alt="Fresh Fruits Basket at Kusarkar Farm" className="hero-right-bg-img" />
+          <img src="/hero_mockup.png" alt="Kusarkar Farm Vineyard Mockup" className="hero-right-bg-img" />
           <div className="hero-right-overlay"></div>
         </div>
       </div>
@@ -33,7 +33,7 @@ export const Hero = () => {
 
           <h1 className="hero-main-title">
             {t('hero.title1')}<br />
-            <span className="text-green-hero highlight-line">{t('hero.title2')}</span>
+            <span className="text-green-hero">{t('hero.title2')}</span>
           </h1>
 
           <p className="hero-desc">{t('hero.desc')}</p>
@@ -47,10 +47,10 @@ export const Hero = () => {
             </a>
           </div>
 
-          {/* 4 Feature Highlights Row */}
-          <div className="hero-features-row hero-4-features">
+          {/* 3 Feature Highlights Row */}
+          <div className="hero-features-row">
             <div className="h-feature">
-              <div className="hf-icon">🌾</div>
+              <div className="hf-icon">🌱</div>
               <div className="hf-text">
                 <strong>{t('hero.f1Title')}</strong>
                 <small>{t('hero.f1Sub')}</small>
@@ -58,7 +58,7 @@ export const Hero = () => {
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon">🌱</div>
+              <div className="hf-icon">🌿</div>
               <div className="hf-text">
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
@@ -72,17 +72,47 @@ export const Hero = () => {
                 <small>{t('hero.f3Sub')}</small>
               </div>
             </div>
-
-            <div className="h-feature">
-              <div className="hf-icon">🏡</div>
-              <div className="hf-text">
-                <strong>{t('hero.f4Title')}</strong>
-                <small>{t('hero.f4Sub')}</small>
-              </div>
-            </div>
           </div>
 
           <div className="deco-leaf">🍃</div>
+        </div>
+
+        {/* Right Visual Floating Fruit Bar */}
+        <div className="hero-right-visual">
+          {/* <div className="hero-floating-fruit-bar">
+            <a href="#products" className="ff-item ff-grapes">
+              <div className="ff-img-wrap grapes-wrap">
+                <img src="/grapes.png" alt="Grapes" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.grapesTitle')}</h4>
+                <p>{t('ff.grapesSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+
+            <a href="#products" className="ff-item ff-mango">
+              <div className="ff-img-wrap mango-wrap">
+                <img src="/mango.png" alt="Mango" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.mangoTitle')}</h4>
+                <p>{t('ff.mangoSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+
+            <a href="#products" className="ff-item ff-guava">
+              <div className="ff-img-wrap guava-wrap">
+                <img src="/guava.png" alt="Guava" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.guavaTitle')}</h4>
+                <p>{t('ff.guavaSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+          </div> */}
         </div>
       </div>
     </section>
