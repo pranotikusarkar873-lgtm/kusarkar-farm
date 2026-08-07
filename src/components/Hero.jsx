@@ -76,6 +76,44 @@ export const Hero = () => {
 
           <div className="deco-leaf">🍃</div>
         </div>
+
+        {/* Right Visual Floating Fruit Bar */}
+        <div className="hero-right-visual">
+          <div className="hero-floating-fruit-bar">
+            <a href="#products" className="ff-item ff-grapes">
+              <div className="ff-img-wrap grapes-wrap">
+                <img src="/grapes.png" alt="Grapes" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.grapesTitle')}</h4>
+                <p>{t('ff.grapesSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+
+            <a href="#products" className="ff-item ff-mango">
+              <div className="ff-img-wrap mango-wrap">
+                <img src="/mango.png" alt="Mango" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.mangoTitle')}</h4>
+                <p>{t('ff.mangoSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+
+            <a href="#products" className="ff-item ff-guava">
+              <div className="ff-img-wrap guava-wrap">
+                <img src="/guava.png" alt="Guava" />
+              </div>
+              <div className="ff-info">
+                <h4>{t('ff.guavaTitle')}</h4>
+                <p>{t('ff.guavaSub')}</p>
+                <span className="ff-link">{t('ff.viewMore')}</span>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
