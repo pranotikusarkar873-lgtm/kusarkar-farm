@@ -48,27 +48,33 @@ export const Hero = () => {
             </a>
           </div>
 
-          {/* 3 Feature Highlights Row */}
-          <div className="hero-features-row">
-            <div className="h-feature">
-              <div className="hf-icon">🌱</div>
-              <div className="hf-text">
+          {/* 3 Creative Floating Feature Cards */}
+          <div className="hero-features-creative">
+            <div className="hf-creative-card">
+              <div className="hf-creative-icon-wrap icon-sprout">
+                <span>🌱</span>
+              </div>
+              <div className="hf-creative-text">
                 <strong>{t('hero.f1Title')}</strong>
                 <small>{t('hero.f1Sub')}</small>
               </div>
             </div>
 
-            <div className="h-feature">
-              <div className="hf-icon">🌿</div>
-              <div className="hf-text">
+            <div className="hf-creative-card">
+              <div className="hf-creative-icon-wrap icon-leaf">
+                <span>🌿</span>
+              </div>
+              <div className="hf-creative-text">
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
               </div>
             </div>
 
-            <div className="h-feature">
-              <div className="hf-icon">🏵️</div>
-              <div className="hf-text">
+            <div className="hf-creative-card">
+              <div className="hf-creative-icon-wrap icon-badge">
+                <span>🏵️</span>
+              </div>
+              <div className="hf-creative-text">
                 <strong>{t('hero.f3Title')}</strong>
                 <small>{t('hero.f3Sub')}</small>
               </div>
