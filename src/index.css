@@ -293,7 +293,7 @@ ul {
 .hero-right-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #f7fbf7 0%, rgba(247, 251, 247, 0.35) 16%, transparent 42%);
+  background: linear-gradient(90deg, #f7fbf7 0%, rgba(247, 251, 247, 0.25) 15%, transparent 35%);
 }
 
 /* FLOATING FRUITS */
