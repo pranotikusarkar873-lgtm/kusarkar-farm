@@ -60,7 +60,7 @@ export const Hero = () => {
               </div>
             </div>
 
-            <div className="hf-creative-card">
+            {/* <div className="hf-creative-card">
               <div className="hf-creative-icon-wrap icon-leaf">
                 <span>🌿</span>
               </div>
@@ -68,7 +68,7 @@ export const Hero = () => {
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
               </div>
-            </div>
+            </div> */}
 
             <div className="hf-creative-card">
               <div className="hf-creative-icon-wrap icon-badge">
