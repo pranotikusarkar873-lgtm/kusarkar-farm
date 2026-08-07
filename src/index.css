@@ -257,43 +257,94 @@ ul {
 /* ============================================================ HERO SECTION */
 .hero {
   position: relative;
-  min-height: 88vh;
-  padding-top: 6.5rem;
-  padding-bottom: 3rem;
+  min-height: 90vh;
+  padding-top: 7rem;
+  padding-bottom: 3.5rem;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: #f7fbf7;
+  background: #0a0f0a;
 }
 
-.hero-bg-split {
+.hero-full-bg {
   position: absolute;
   inset: 0;
-  display: flex;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
 }
 
-.hero-bg-left {
-  width: 48%;
-  background: linear-gradient(135deg, #f7fbf7 0%, #ffffff 100%);
-}
-
-.hero-bg-right {
-  width: 52%;
-  position: relative;
-}
-
-.hero-right-bg-img {
+.hero-banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center right;
 }
 
-.hero-right-overlay {
+.hero-banner-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #f7fbf7 0%, rgba(247, 251, 247, 0.35) 16%, transparent 42%);
+  background: linear-gradient(90deg, rgba(5, 12, 6, 0.88) 0%, rgba(5, 12, 6, 0.68) 45%, rgba(5, 12, 6, 0.25) 75%, transparent 100%);
+}
+
+.hero-tag-glass {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.hero-title-white {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.text-lime-gold {
+  color: #aacc00;
+  background: linear-gradient(135deg, #ccff33 0%, #70e000 50%, #38b000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-desc-white {
+  color: #e8f5e9 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  font-weight: 500;
+}
+
+.btn-contact-white {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff !important;
+  border: 1.8px solid #ffffff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.btn-contact-white:hover {
+  background: #ffffff;
+  color: var(--green-dark) !important;
+  text-shadow: none;
+}
+
+.hf-icon-glass {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hf-text-white strong {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.hf-text-white small {
+  color: #d8f3dc !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* FLOATING FRUITS */
@@ -1867,29 +1918,12 @@ ul {
   .hero {
     min-height: auto;
     padding-top: 5rem;
-    padding-bottom: 2rem;
-    background: #f7fbf7;
+    padding-bottom: 2.5rem;
+    background: #050c06;
   }
 
-  .hero-bg-split {
-    flex-direction: column;
-  }
-
-  .hero-bg-left {
-    width: 100%;
-    height: 100%;
-    background: #f7fbf7;
-  }
-
-  .hero-bg-right {
-    width: 100%;
-    height: 100%;
-    opacity: 0.18;
-  }
-
-  .hero-right-overlay {
-    background: #f7fbf7;
-    opacity: 0.75;
+  .hero-banner-overlay {
+    background: linear-gradient(180deg, rgba(5, 12, 6, 0.92) 0%, rgba(5, 12, 6, 0.78) 60%, rgba(5, 12, 6, 0.45) 100%);
   }
 
   .hero-container {

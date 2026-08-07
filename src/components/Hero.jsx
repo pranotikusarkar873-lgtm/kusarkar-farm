@@ -5,13 +5,14 @@ export const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="hero" id="home">
-      <div className="hero-bg-split">
-        <div className="hero-bg-left"></div>
-        <div className="hero-bg-right">
-          <img src="/hero_farmer_harvest.jpg" alt="Farmer Harvesting Fresh Fruits at Kusarkar Farm" className="hero-right-bg-img" />
-          <div className="hero-right-overlay"></div>
-        </div>
+    <section className="hero hero-wide-banner" id="home">
+      <div className="hero-full-bg">
+        <img
+          src="/kusarkar_wide_banner.jpg"
+          alt="Kusarkar Farm Golden Sunset Vineyard Banner"
+          className="hero-banner-img"
+        />
+        <div className="hero-banner-overlay"></div>
       </div>
 
       {/* Floating Fruits Overlay */}
@@ -25,49 +26,49 @@ export const Hero = () => {
       </div>
 
       <div className="container hero-container">
-        {/* Left Content */}
-        <div className="hero-left-content">
-          <div className="hero-tag">
+        {/* Left Content with Crisp White Text */}
+        <div className="hero-left-content hero-white-text">
+          <div className="hero-tag hero-tag-glass">
             🍃 {t('hero.tag')}
           </div>
 
-          <h1 className="hero-main-title">
+          <h1 className="hero-main-title hero-title-white">
             {t('hero.title1')}<br />
-            <span className="text-green-hero">{t('hero.title2')}</span>
+            <span className="text-lime-gold">{t('hero.title2')}</span>
           </h1>
 
-          <p className="hero-desc">{t('hero.desc')}</p>
+          <p className="hero-desc hero-desc-white">{t('hero.desc')}</p>
 
           <div className="hero-btn-row">
             <a href="#products" className="btn-explore-hero">
               {t('hero.btnExplore')}
             </a>
-            <a href="#contact" className="btn-contact-hero">
+            <a href="#contact" className="btn-contact-hero btn-contact-white">
               {t('hero.btnContact')}
             </a>
           </div>
 
-          {/* 3 Feature Highlights Row */}
-          <div className="hero-features-row">
+          {/* 3 Feature Highlights Row (White Theme) */}
+          <div className="hero-features-row hero-features-white">
             <div className="h-feature">
-              <div className="hf-icon">🌱</div>
-              <div className="hf-text">
+              <div className="hf-icon hf-icon-glass">🌱</div>
+              <div className="hf-text hf-text-white">
                 <strong>{t('hero.f1Title')}</strong>
                 <small>{t('hero.f1Sub')}</small>
               </div>
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon">🌿</div>
-              <div className="hf-text">
+              <div className="hf-icon hf-icon-glass">🌿</div>
+              <div className="hf-text hf-text-white">
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
               </div>
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon">🏵️</div>
-              <div className="hf-text">
+              <div className="hf-icon hf-icon-glass">🏵️</div>
+              <div className="hf-text hf-text-white">
                 <strong>{t('hero.f3Title')}</strong>
                 <small>{t('hero.f3Sub')}</small>
               </div>
