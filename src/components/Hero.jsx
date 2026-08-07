@@ -5,14 +5,14 @@ export const Hero = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="hero hero-wide-banner" id="home">
+    <section className="hero hero-wide-banner hero-light-shade" id="home">
       <div className="hero-full-bg">
         <img
           src="/kusarkar_wide_banner.jpg"
           alt="Kusarkar Farm Golden Sunset Vineyard Banner"
           className="hero-banner-img"
         />
-        <div className="hero-banner-overlay"></div>
+        <div className="hero-banner-overlay hero-white-shade-overlay"></div>
       </div>
 
       {/* Floating Fruits Overlay */}
@@ -26,49 +26,49 @@ export const Hero = () => {
       </div>
 
       <div className="container hero-container">
-        {/* Left Content with Crisp White Text */}
-        <div className="hero-left-content hero-white-text">
-          <div className="hero-tag hero-tag-glass">
+        {/* Left Content */}
+        <div className="hero-left-content">
+          <div className="hero-tag">
             🍃 {t('hero.tag')}
           </div>
 
-          <h1 className="hero-main-title hero-title-white">
+          <h1 className="hero-main-title">
             {t('hero.title1')}<br />
-            <span className="text-lime-gold">{t('hero.title2')}</span>
+            <span className="text-green-hero">{t('hero.title2')}</span>
           </h1>
 
-          <p className="hero-desc hero-desc-white">{t('hero.desc')}</p>
+          <p className="hero-desc">{t('hero.desc')}</p>
 
           <div className="hero-btn-row">
             <a href="#products" className="btn-explore-hero">
               {t('hero.btnExplore')}
             </a>
-            <a href="#contact" className="btn-contact-hero btn-contact-white">
+            <a href="#contact" className="btn-contact-hero">
               {t('hero.btnContact')}
             </a>
           </div>
 
-          {/* 3 Feature Highlights Row (White Theme) */}
-          <div className="hero-features-row hero-features-white">
+          {/* 3 Feature Highlights Row */}
+          <div className="hero-features-row">
             <div className="h-feature">
-              <div className="hf-icon hf-icon-glass">🌱</div>
-              <div className="hf-text hf-text-white">
+              <div className="hf-icon">🌱</div>
+              <div className="hf-text">
                 <strong>{t('hero.f1Title')}</strong>
                 <small>{t('hero.f1Sub')}</small>
               </div>
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon hf-icon-glass">🌿</div>
-              <div className="hf-text hf-text-white">
+              <div className="hf-icon">🌿</div>
+              <div className="hf-text">
                 <strong>{t('hero.f2Title')}</strong>
                 <small>{t('hero.f2Sub')}</small>
               </div>
             </div>
 
             <div className="h-feature">
-              <div className="hf-icon hf-icon-glass">🏵️</div>
-              <div className="hf-text hf-text-white">
+              <div className="hf-icon">🏵️</div>
+              <div className="hf-text">
                 <strong>{t('hero.f3Title')}</strong>
                 <small>{t('hero.f3Sub')}</small>
               </div>
