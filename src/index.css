@@ -2738,9 +2738,33 @@ ul {
     order: 2;
   }
 
+  /* Why Choose Us: Always-active top accent bar, spinning icon ring & colored title on mobile/tablet */
   .why-cards-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+
+  .why-feat-card {
+    border-color: var(--card-color, #40916c);
+    box-shadow: 0 8px 24px rgba(27, 67, 50, 0.08);
+  }
+
+  .why-card-accent-bar {
+    transform: scaleX(1) !important;
+  }
+
+  .why-card-icon-ring {
+    opacity: 0.75 !important;
+    transform: rotate(15deg) scale(1) !important;
+    animation: why-ring-spin 7s linear infinite !important;
+  }
+
+  .why-card-title {
+    color: var(--card-color, #2d6a4f) !important;
+  }
+
+  .why-card-glow {
+    opacity: 0.15 !important;
   }
 
   .footer-inner {
