@@ -118,7 +118,7 @@ app.post('/api/orders', (req, res) => {
     }
   });
 
-  orderSummary += `\n💰 *Total Amount: ₹${total}*\n📍 *Location:* Tasgaon, Dist. Sangli\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
+  orderSummary += `\n💰 *Total Amount: ₹${total}*\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
 
   const farmerPhone = '919421311949';
   const whatsappUrl = `https://wa.me/${farmerPhone}?text=${encodeURIComponent(orderSummary)}`;

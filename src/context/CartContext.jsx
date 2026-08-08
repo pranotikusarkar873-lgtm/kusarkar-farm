@@ -145,7 +145,7 @@ export const CartProvider = ({ children }) => {
         total += line;
         msg += `${p.emoji} ${p.name} × ${qty} ${p.unit} = ₹${line}\n`;
       });
-      msg += `\n💰 *Total Amount: ₹${total}*\n📍 *Location:* Tasgaon, Dist. Sangli\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
+      msg += `\n💰 *Total Amount: ₹${total}*\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
       const url = `https://wa.me/919421311949?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
       setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
