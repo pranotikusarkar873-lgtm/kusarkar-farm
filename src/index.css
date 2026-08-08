@@ -2937,8 +2937,8 @@ ul {
   }
 
   .hero-tag {
-    font-size: 0.72rem;
-    padding: 0.35rem 0.9rem;
+    font-size: 0.82rem;
+    padding: 0.4rem 1.1rem;
     margin-top: 1.2rem;
     margin-bottom: 1.2rem;
     max-width: 95vw;
@@ -2950,8 +2950,8 @@ ul {
   }
 
   .hero-main-title {
-    font-size: clamp(1.75rem, 7vw, 2.2rem);
-    line-height: 1.28;
+    font-size: clamp(2rem, 8vw, 2.55rem);
+    line-height: 1.25;
     margin-bottom: 1.1rem;
     letter-spacing: -0.2px;
     color: #071508;
@@ -2966,8 +2966,8 @@ ul {
   }
 
   .hero-desc {
-    font-size: 0.88rem;
-    line-height: 1.6;
+    font-size: 1.02rem;
+    line-height: 1.62;
     margin-bottom: 1.4rem;
     max-width: 92vw;
     color: #0a1f0c;
@@ -2985,9 +2985,9 @@ ul {
   .btn-explore-hero,
   .btn-contact-hero {
     flex: 1 1 auto;
-    padding: 0.68rem 1rem;
-    font-size: 0.84rem;
-    min-width: 125px;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.94rem;
+    min-width: 135px;
     justify-content: center;
   }
 
