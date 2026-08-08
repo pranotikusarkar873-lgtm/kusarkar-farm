@@ -4,7 +4,7 @@ const CartContext = createContext();
 
 const initialProducts = {
   mango: { id: 'mango', name: 'Alphonso Mango', marathiName: 'हापूस आंबा', emoji: '🥭', price: 80, unit: 'dozen' },
-  grapes: { id: 'grapes', name: 'Black Grapes', marathiName: 'काळी द्राक्षे', emoji: '🍇', price: 60, unit: 'kg' },
+  grapes: { id: 'grapes', name: 'Grapes', marathiName: 'द्राक्षे', emoji: '🍇', price: 60, unit: 'kg' },
   guava: { id: 'guava', name: 'Fresh Guava', marathiName: 'ताजे पेरू', emoji: '🍈', price: 40, unit: 'kg' },
 };
 

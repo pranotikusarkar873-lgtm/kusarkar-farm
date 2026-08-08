@@ -11,8 +11,8 @@ app.use(express.json());
 const products = [
   {
     id: 'grapes',
-    name: 'Black Grapes',
-    marathiName: 'काळी द्राक्षे',
+    name: 'Grapes',
+    marathiName: 'द्राक्षे',
     emoji: '🍇',
     image: '/grapes_farm.png',
     price: 60,
