@@ -4,7 +4,7 @@
 
 // ---- CART STATE ----
 const products = {
-  mango: { name: 'Alphonso Mango', emoji: '🥭', price: 80, unit: 'dozen' },
+  mango: { name: 'Kesar Mango', emoji: '🥭', price: 80, unit: 'dozen' },
   grapes: { name: 'Black Grapes', emoji: '🍇', price: 60, unit: 'kg' },
   guava: { name: 'Fresh Guava', emoji: '🍈', price: 40, unit: 'kg' },
 };
@@ -104,7 +104,7 @@ const translations = {
     "contact.timeTitle": "Visiting & Order Hours",
     "contact.timeDesc": "Mon – Sun: 6:00 AM – 9:00 PM",
     "contact.specTitle": "Farm Specialties",
-    "contact.specDesc": "Alphonso Mangoes, Black Grapes & Fresh Guavas",
+    "contact.specDesc": "Kesar Mangoes, Black Grapes & Fresh Guavas",
     "contact.quickConnect": "Quick Connect:",
     "contact.btnCall": "📞 Call Us",
     "contact.btnWa": "💬 WhatsApp",
@@ -212,7 +212,7 @@ const translations = {
     "contact.timeTitle": "भेट व ऑर्डर वेळ",
     "contact.timeDesc": "सोम - रवि: सकाळी ६:०० - रात्री ९:००",
     "contact.specTitle": "फार्मची वैशिष्ट्ये",
-    "contact.specDesc": "हापूस आंबे, काळी द्राक्षे आणि ताजे पेरू",
+    "contact.specDesc": "केशर आंबे, काळी द्राक्षे आणि ताजे पेरू",
     "contact.quickConnect": "झटपट संपर्क:",
     "contact.btnCall": "📞 कॉल करा",
     "contact.btnWa": "💬 व्हॉट्सअ‍ॅप",

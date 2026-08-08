@@ -20,7 +20,7 @@ export const Gallery = () => {
   }, []);
 
   const galleryImages = [
-    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Alphonso Mango Slices', span: 'tall', tag: '🥭 Alphonso', tagMr: '🥭 हापूस' },
+    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Kesar Mango Slices', span: 'tall', tag: '🥭 Kesar', tagMr: '🥭 केशर' },
     { src: '/gallery_guava_farm.jpg',   alt: 'Guava from the Farm',         span: 'tall', tag: '🍈 Farm Fresh', tagMr: '🍈 ताजे पेरू' },
     { src: '/gallery_grapes_box.jpg',   alt: 'Grapes Ready for Export',     span: 'square', tag: '🍇 Exports', tagMr: '🍇 निर्यात' },
     { src: '/gallery_mango_harvest.jpg',alt: 'Mango Harvest from Farm',     span: 'tall', tag: '🥭 Harvest', tagMr: '🥭 फळकाढणी' },

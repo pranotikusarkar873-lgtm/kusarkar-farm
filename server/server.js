@@ -25,8 +25,8 @@ const products = [
   },
   {
     id: 'mango',
-    name: 'Alphonso Mango',
-    marathiName: 'हापूस आंबा',
+    name: 'Kesar Mango',
+    marathiName: 'केशर आंबा',
     emoji: '🥭',
     image: '/mango_farm.png',
     price: 80,
