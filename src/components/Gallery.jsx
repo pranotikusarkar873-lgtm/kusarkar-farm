@@ -29,8 +29,9 @@ export const Gallery = () => {
     { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square', tag: '🍃 Organic' },
     { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide', tag: '🌾 Vineyard' },
     { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall', tag: '👨‍🌾 Harvesting' },
-    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide', tag: '🌿 50+ Acres' },
     { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square', tag: '✨ Quality' },
+    { src: '/gallery_green_grapes.jpg', alt: 'Fresh Green Grapes',          span: 'square', tag: '🍇 Green Grapes' },
+    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide', tag: '🌿 50+ Acres' },
   ];
 
   // Open lightbox
