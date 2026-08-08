@@ -2941,24 +2941,31 @@ ul {
   }
 
   .nav-logo-img {
-    height: 70px;
-    max-width: 160px;
+    height: 86px;
+    max-width: 195px;
     mix-blend-mode: multiply;
     background: transparent;
   }
 
   .nav-actions {
-    gap: 0.3rem;
+    gap: 0.45rem;
+    align-items: center;
   }
 
   .btn-lang-toggle {
-    padding: 0.32rem 0.5rem;
-    font-size: 0.72rem;
+    padding: 0.48rem 0.85rem;
+    font-size: 0.88rem;
+    font-weight: 800;
+    border-radius: 50px;
+    background: #1e4620;
+    color: #ffffff;
+    border: 1px solid rgba(45, 106, 79, 0.4);
+    box-shadow: 0 4px 12px rgba(27, 67, 50, 0.25);
   }
 
   .btn-order-now {
-    padding: 0.35rem 0.65rem;
-    font-size: 0.76rem;
+    padding: 0.48rem 0.85rem;
+    font-size: 0.86rem;
   }
 
   .hero {
