@@ -5,8 +5,9 @@ const LanguageContext = createContext();
 const translations = {
   en: {
     "nav.home": "Home",
-    "nav.about": "About Us",
     "nav.products": "Products",
+    "nav.about": "About Us",
+    "nav.whyUs": "Why Us",
     "nav.gallery": "Gallery",
     "nav.contact": "Contact",
     "nav.orderNow": "Order Now 🛒",
@@ -136,8 +137,9 @@ const translations = {
   },
   mr: {
     "nav.home": "मुखपृष्ठ",
-    "nav.about": "आमच्याबद्दल",
     "nav.products": "उत्पादने",
+    "nav.about": "आमच्याबद्दल",
+    "nav.whyUs": "कुसरकर फार्म का?",
     "nav.gallery": "गॅलरी",
     "nav.contact": "संपर्क",
     "nav.orderNow": "ऑर्डर करा 🛒",

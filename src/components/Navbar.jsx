@@ -12,7 +12,7 @@ export const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
-      const sections = ['home', 'about', 'products', 'gallery', 'contact'];
+      const sections = ['home', 'products', 'about', 'why-us', 'gallery', 'contact'];
       for (const sec of sections) {
         const el = document.getElementById(sec);
         if (el && window.scrollY >= el.offsetTop - 140) {
@@ -40,13 +40,18 @@ export const Navbar = () => {
             </a>
           </li>
           <li>
+            <a href="#products" className={`nav-link ${activeSection === 'products' ? 'active' : ''}`} onClick={closeMenu}>
+              {t('nav.products')}
+            </a>
+          </li>
+          <li>
             <a href="#about" className={`nav-link ${activeSection === 'about' ? 'active' : ''}`} onClick={closeMenu}>
               {t('nav.about')}
             </a>
           </li>
           <li>
-            <a href="#products" className={`nav-link ${activeSection === 'products' ? 'active' : ''}`} onClick={closeMenu}>
-              {t('nav.products')}
+            <a href="#why-us" className={`nav-link ${activeSection === 'why-us' ? 'active' : ''}`} onClick={closeMenu}>
+              {t('nav.whyUs')}
             </a>
           </li>
           <li>
