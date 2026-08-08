@@ -475,14 +475,28 @@ function handleFormSubmit(e) {
   const fruit = document.getElementById('fruitSelect').value;
   const msg = document.getElementById('msgInput').value.trim();
 
-  if (!name || !phone) { showToast('⚠️ Please fill name and phone', 'warn'); return; }
+  if (!name || name.length < 2) {
+    showToast('⚠️ Please enter a valid name (at least 2 letters)', 'warn');
+    return;
+  }
+
+  const cleanPhone = phone.replace(/[\s\-\+\(\)]/g, '');
+  if (!cleanPhone || (!/^[6-9]\d{9}$/.test(cleanPhone) && !/^\d{10}$/.test(cleanPhone))) {
+    showToast('⚠️ Please enter a valid 10-digit mobile number', 'warn');
+    return;
+  }
+
+  if (!msg || msg.length < 5) {
+    showToast('⚠️ Please enter your requirement / message (at least 5 letters)', 'warn');
+    return;
+  }
 
   const fruitEmojis = { mango: '🥭', grapes: '🍇', guava: '🍈', all: '🌿', '': '🍎' };
   const emoji = fruitEmojis[fruit] || '🍎';
   const fruitLabel = fruit ? fruit.charAt(0).toUpperCase() + fruit.slice(1) : 'Not specified';
 
   const waMsg = `${emoji} *New Enquiry from Website*\n\n` +
-    `👤 Name: ${name}\n📞 Phone: ${phone}\n🍎 Interested in: ${fruitLabel}\n\n💬 Message:\n${msg || 'No message'}`;
+    `👤 Name: ${name}\n📞 Phone: ${phone}\n🍎 Interested in: ${fruitLabel}\n\n💬 Message:\n${msg}`;
   const url = `https://wa.me/919421311949?text=${encodeURIComponent(waMsg)}`;
   window.open(url, '_blank');
 

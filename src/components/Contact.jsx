@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { AnimatedTitle } from './AnimatedTitle';
 
 export const Contact = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const { showToast } = useCart();
 
   const [formData, setFormData] = useState({
@@ -14,19 +14,88 @@ export const Contact = () => {
     message: ''
   });
 
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const isMr = lang === 'mr';
+
+  const validateField = (field, value) => {
+    let err = '';
+    const trimmed = (value || '').trim();
+
+    if (field === 'name') {
+      if (!trimmed) {
+        err = isMr ? 'कृपया तुमचे नाव प्रविष्ट करा' : 'Please enter your name';
+      } else if (trimmed.length < 2) {
+        err = isMr ? 'नाव किमान २ अक्षरांचे असावे' : 'Name must be at least 2 characters';
+      } else if (/^\d+$/.test(trimmed)) {
+        err = isMr ? 'नावात फक्त अंक नसावेत' : 'Name cannot be numbers only';
+      }
+    }
+
+    if (field === 'phone') {
+      const cleanPhone = trimmed.replace(/[\s\-\+\(\)]/g, '');
+      if (!cleanPhone) {
+        err = isMr ? 'कृपया मोबाईल नंबर प्रविष्ट करा' : 'Please enter mobile number';
+      } else if (!/^[6-9]\d{9}$/.test(cleanPhone) && !/^\d{10}$/.test(cleanPhone)) {
+        err = isMr ? 'कृपया १०-अंकी वैध मोबाईल नंबर प्रविष्ट करा (उदा. 9823456789)' : 'Please enter a valid 10-digit mobile number';
+      }
+    }
+
+    if (field === 'email' && trimmed) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(trimmed)) {
+        err = isMr ? 'कृपया वैध ईमेल पत्ता प्रविष्ट करा (उदा. name@gmail.com)' : 'Please enter a valid email address';
+      }
+    }
+
+    if (field === 'message') {
+      if (!trimmed) {
+        err = isMr ? 'कृपया तुमचा मेसेज प्रविष्ट करा' : 'Please enter your message';
+      } else if (trimmed.length < 5) {
+        err = isMr ? 'मेसेज किमान ५ अक्षरांचा असावा' : 'Message must be at least 5 characters';
+      }
+    }
+
+    return err;
+  };
+
+  const validateAll = () => {
+    const newErrors = {};
+    ['name', 'phone', 'email', 'message'].forEach(f => {
+      const err = validateField(f, formData[f]);
+      if (err) newErrors[f] = err;
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.id]: e.target.value
-    }));
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+
+    if (touched[id]) {
+      const err = validateField(id, value);
+      setErrors(prev => ({ ...prev, [id]: err }));
+    }
+  };
+
+  const handleBlur = (e) => {
+    const { id, value } = e.target;
+    setTouched(prev => ({ ...prev, [id]: true }));
+    const err = validateField(id, value);
+    setErrors(prev => ({ ...prev, [id]: err }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) {
-      showToast('⚠️ Please fill name and phone number', 'warn');
+
+    // Mark all as touched
+    setTouched({ name: true, phone: true, email: true, message: true });
+
+    if (!validateAll()) {
+      showToast(isMr ? '⚠️ फॉर्ममध्ये काही चुका आहेत. कृपया त्या दुरुस्त करा.' : '⚠️ Please correct the errors in the form', 'warn');
       return;
     }
 
@@ -44,18 +113,22 @@ export const Contact = () => {
 
       if (data.success && data.whatsappUrl) {
         window.open(data.whatsappUrl, '_blank');
-        showToast('✅ Message sent! Opening WhatsApp...');
+        showToast(isMr ? '✅ मेसेज पाठवला! व्हॉट्सअ‍ॅप उघडत आहे...' : '✅ Message sent! Opening WhatsApp...');
         setFormData({ name: '', phone: '', email: '', message: '' });
+        setErrors({});
+        setTouched({});
       } else {
         throw new Error(data.error || 'Failed to submit form');
       }
     } catch (err) {
       // Direct Fallback
       const farmerPhone = '919421311949';
-      const waMsg = `🌿 *New Website Enquiry*\n\n👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n✉️ Email: ${formData.email || 'None'}\n\n💬 Message:\n${formData.message || 'No message'}`;
+      const waMsg = `🌿 *New Website Enquiry*\n\n👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n✉️ Email: ${formData.email || 'None'}\n\n💬 Message:\n${formData.message}`;
       window.open(`https://wa.me/${farmerPhone}?text=${encodeURIComponent(waMsg)}`, '_blank');
-      showToast('✅ Opening WhatsApp to send your enquiry!');
+      showToast(isMr ? '✅ मेसेज पाठवण्यासाठी व्हॉट्सअ‍ॅप उघडत आहे!' : '✅ Opening WhatsApp to send your enquiry!');
       setFormData({ name: '', phone: '', email: '', message: '' });
+      setErrors({});
+      setTouched({});
     } finally {
       setIsSubmitting(false);
     }
@@ -81,55 +154,73 @@ export const Contact = () => {
               <h3 className="contact-form-title">{t('contact.formTitle')}</h3>
             </div>
 
-            <form onSubmit={handleSubmit}>
-              <div className="form-field">
+            <form onSubmit={handleSubmit} noValidate>
+              <div className={`form-field ${errors.name && touched.name ? 'form-field-invalid' : ''}`}>
                 <label htmlFor="name">{t('contact.nameLabel')}</label>
                 <input
                   type="text"
                   id="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="e.g. Ramesh Shinde"
-                  required
+                  className={errors.name && touched.name ? 'input-error' : ''}
                 />
+                {errors.name && touched.name && (
+                  <span className="form-error-msg">⚠️ {errors.name}</span>
+                )}
               </div>
 
-              <div className="form-field">
+              <div className={`form-field ${errors.phone && touched.phone ? 'form-field-invalid' : ''}`}>
                 <label htmlFor="phone">{t('contact.phoneLabel')}</label>
                 <input
                   type="tel"
                   id="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="+91 94213 11949"
-                  required
+                  className={errors.phone && touched.phone ? 'input-error' : ''}
                 />
+                {errors.phone && touched.phone && (
+                  <span className="form-error-msg">⚠️ {errors.phone}</span>
+                )}
               </div>
 
-              <div className="form-field">
+              <div className={`form-field ${errors.email && touched.email ? 'form-field-invalid' : ''}`}>
                 <label htmlFor="email">{t('contact.emailLabel')}</label>
                 <input
                   type="email"
                   id="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder="yourname@gmail.com"
+                  className={errors.email && touched.email ? 'input-error' : ''}
                 />
+                {errors.email && touched.email && (
+                  <span className="form-error-msg">⚠️ {errors.email}</span>
+                )}
               </div>
 
-              <div className="form-field">
+              <div className={`form-field ${errors.message && touched.message ? 'form-field-invalid' : ''}`}>
                 <label htmlFor="message">{t('contact.msgLabel')}</label>
                 <textarea
                   id="message"
                   rows="3"
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   placeholder={t('contact.msgPlaceholder')}
+                  className={errors.message && touched.message ? 'input-error' : ''}
                 ></textarea>
+                {errors.message && touched.message && (
+                  <span className="form-error-msg">⚠️ {errors.message}</span>
+                )}
               </div>
 
               <button type="submit" className="btn-send-msg" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : t('contact.btnSend')}
+                {isSubmitting ? (isMr ? 'पाठवत आहे...' : 'Sending...') : t('contact.btnSend')}
               </button>
             </form>
           </div>

@@ -1901,6 +1901,28 @@ ul {
   box-shadow: 0 0 0 3px rgba(64, 145, 108, 0.12);
 }
 
+.form-field input.input-error,
+.form-field textarea.input-error {
+  border-color: #e63946 !important;
+  background: #fff8f8 !important;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15) !important;
+}
+
+.form-error-msg {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #d62828;
+  margin-top: 0.35rem;
+  animation: formShake 0.3s ease;
+}
+
+@keyframes formShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}
+
 .btn-send-msg {
   width: 100%;
   background: var(--green-dark);
