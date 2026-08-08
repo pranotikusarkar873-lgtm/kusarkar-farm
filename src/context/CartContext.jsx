@@ -130,12 +130,13 @@ export const CartProvider = ({ children }) => {
       }
     } catch (err) {
       // Fallback direct WhatsApp redirect
-      let msg = '🌿 *कुसरकर फार्म (Kusarkar Farm) – नवी ऑर्डर* 🌿\n\n';
+      let msg = '🌿 *नमस्कार कुसरकर फार्म! (New Fruit Order)* 🌿\n\n' +
+        'मी तुमच्या वेबसाईटवरून खालील ताज्या फळांची ऑर्डर देत आहे:\n\n';
       if (currentUserInfo) {
-        msg += `👤 *ग्राहक / Customer:* ${currentUserInfo.name}\n`;
-        msg += `📞 *मोबाईल / Mobile:* ${currentUserInfo.mobile}\n\n`;
+        msg += `👤 *ग्राहकाचे नाव (Customer):* ${currentUserInfo.name}\n`;
+        msg += `📞 *मोबाईल नंबर (Mobile):* ${currentUserInfo.mobile}\n\n`;
       }
-      msg += '📋 *फळांची ऑर्डर (Order Items):*\n';
+      msg += '📋 *ऑर्डर केलेल्या फळांची यादी (Ordered Fruits):*\n';
       let total = 0;
       activeKeys.forEach(id => {
         const p = initialProducts[id];
@@ -144,7 +145,7 @@ export const CartProvider = ({ children }) => {
         total += line;
         msg += `${p.emoji} ${p.marathiName || p.name} (${p.name}) × ${qty} ${p.unit} = ₹${line}\n`;
       });
-      msg += `\n💰 *एकूण रक्कम (Total Amount): ₹${total}*\n📍 *ठिकाण:* तासगाव, जि. सांगली\n\n----------------------------------\n🙏 *धन्यवाद! Thank you for ordering from Kusarkar Farm!*\nकृपया माझी ऑर्डर आणि डिलिव्हरी वेळेची पुष्टी करा. (Please confirm my order & delivery details.)`;
+      msg += `\n💰 *एकूण बिल (Total Amount): ₹${total}*\n📍 *डिलिव्हरी ठिकाण:* तासगाव, जि. सांगली\n\n----------------------------------\n🙏 *कृपया माझी ही ऑर्डर स्वीकारावी व डिलिव्हरीच्या वेळेची पुष्टी करावी. धन्यवाद!*`;
       const url = `https://wa.me/919421311949?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
       setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
