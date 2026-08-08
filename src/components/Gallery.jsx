@@ -19,18 +19,18 @@ export const Gallery = () => {
   }, []);
 
   const galleryImages = [
-    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Alphonso Mango Slices', span: 'tall' },
-    { src: '/gallery_guava_farm.jpg',   alt: 'Guava from the Farm',         span: 'tall' },
-    { src: '/gallery_grapes_box.jpg',   alt: 'Grapes Ready for Export',     span: 'square' },
-    { src: '/gallery_mango_harvest.jpg',alt: 'Mango Harvest from Farm',     span: 'tall' },
-    { src: '/gallery_guava_fresh.jpg',  alt: 'Fresh Farm Guavas',           span: 'square' },
-    { src: '/gallery_grapes.png',       alt: 'Fresh Black Grapes',          span: 'square' },
-    { src: '/gallery_mango_box.jpg',    alt: 'Mango Box Ready for Delivery',span: 'wide' },
-    { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square' },
-    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide' },
-    { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall' },
-    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide' },
-    { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square' },
+    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Alphonso Mango Slices', span: 'tall', tag: '🥭 Alphonso' },
+    { src: '/gallery_guava_farm.jpg',   alt: 'Guava from the Farm',         span: 'tall', tag: '🍈 Farm Fresh' },
+    { src: '/gallery_grapes_box.jpg',   alt: 'Grapes Ready for Export',     span: 'square', tag: '🍇 Exports' },
+    { src: '/gallery_mango_harvest.jpg',alt: 'Mango Harvest from Farm',     span: 'tall', tag: '🥭 Harvest' },
+    { src: '/gallery_guava_fresh.jpg',  alt: 'Fresh Farm Guavas',           span: 'square', tag: '🍈 Guava' },
+    { src: '/gallery_grapes.png',       alt: 'Fresh Black Grapes',          span: 'square', tag: '🍇 Grapes' },
+    { src: '/gallery_mango_box.jpg',    alt: 'Mango Box Ready for Delivery',span: 'wide', tag: '📦 Export Box' },
+    { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square', tag: '🍃 Organic' },
+    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide', tag: '🌾 Vineyard' },
+    { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall', tag: '👨‍🌾 Harvesting' },
+    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide', tag: '🌿 50+ Acres' },
+    { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square', tag: '✨ Quality' },
   ];
 
   // Open lightbox
@@ -88,6 +88,7 @@ export const Gallery = () => {
               aria-label={`View ${img.alt}`}
             >
               <img src={img.src} alt={img.alt} loading="lazy" />
+              {img.tag && <span className="gallery-tile-tag">{img.tag}</span>}
               {/* Hover overlay hint */}
               <div className="gallery-tile-overlay">
                 <span className="gallery-tile-zoom">🔍</span>
