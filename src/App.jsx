@@ -11,6 +11,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CartSidebar } from './components/CartSidebar';
 import { UserInfoModal } from './components/UserInfoModal';
+import { StickyMobileOrderBtn } from './components/StickyMobileOrderBtn';
 
 const ToastContainer = () => {
   const { toast } = useCart();
@@ -45,6 +46,7 @@ function MainApp() {
       </main>
       <Footer />
       <CartSidebar />
+      <StickyMobileOrderBtn />
       <ToastContainer />
       <UserModalGlobal />
     </div>

@@ -3604,3 +3604,107 @@ ul {
   opacity: 1;
   transform: perspective(400px) rotateX(0deg) translateY(0);
 }
+
+/* ============================================================
+   STICKY FLOATING MOBILE ORDER BUTTON (ANIMATED)
+   ============================================================ */
+.sticky-mobile-bar-wrap {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .sticky-mobile-bar-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 1.2rem;
+    left: 0;
+    right: 0;
+    z-index: 998;
+    pointer-events: none;
+    padding: 0 1.2rem;
+  }
+
+  .sticky-mobile-order-btn {
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 340px;
+    padding: 0.82rem 1.4rem;
+    background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50px;
+    box-shadow: 0 8px 24px rgba(27, 67, 50, 0.45), 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-family: inherit;
+    font-weight: 800;
+    font-size: 0.96rem;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    overflow: hidden;
+    animation: smobFloatPulse 3s infinite ease-in-out;
+  }
+
+  .sticky-mobile-order-btn:active {
+    transform: scale(0.96);
+  }
+
+  .smob-pulse-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50px;
+    border: 2px solid rgba(82, 183, 136, 0.6);
+    animation: smobRingPulse 2s infinite cubic-bezier(0, 0.2, 0.8, 1);
+    pointer-events: none;
+  }
+
+  .smob-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+  }
+
+  .smob-title {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .smob-badge {
+    background: #d4a017;
+    color: #111111;
+    font-weight: 900;
+    font-size: 0.78rem;
+    padding: 0.15rem 0.55rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes smobFloatPulse {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 8px 24px rgba(27, 67, 50, 0.45);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 14px 30px rgba(27, 67, 50, 0.55);
+  }
+}
+
+@keyframes smobRingPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+}
