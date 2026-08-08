@@ -1,63 +1,53 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
+import { AnimatedTitle } from './AnimatedTitle';
+
+// Hook — fires once when element enters viewport
+const useReveal = () => {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible];
+};
 
 export const Products = () => {
   const { lang, t } = useLanguage();
   const { quantities, changeQty, addToCart } = useCart();
   const [productList, setProductList] = useState([]);
+  const [sectionRef, sectionVisible] = useReveal();
 
   useEffect(() => {
-    // Fetch products from Node.js Backend API
     fetch('/api/products')
       .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          setProductList(data.products);
-        }
-      })
+      .then(data => { if (data.success) setProductList(data.products); })
       .catch(() => {
-        // Local fallback if server loading
         setProductList([
           {
-            id: 'grapes',
-            name: 'Grapes',
-            marathiName: 'द्राक्षे',
-            emoji: '🍇',
-            image: '/grapes.png',
-            price: 60,
-            unit: 'kg',
-            bgClass: 'card-grapes-bg',
-            titleClass: 'green-t',
-            btnClass: 'green-btn',
+            id: 'grapes', name: 'Grapes', marathiName: 'द्राक्षे', emoji: '🍇',
+            image: '/grapes_farm.png', price: 60, unit: 'kg',
+            bgClass: 'card-grapes-bg', titleClass: 'green-t', btnClass: 'green-btn',
             featuresEn: ['Sweet & Crunchy', 'Export Quality', 'Naturally Grown', 'Rich in Antioxidants'],
             featuresMr: ['गोड व कुरकुरीत', 'एक्सपोर्ट क्वालिटी', 'नैसर्गिकरीत्या पिकवलेली', 'अँटीऑक्सिडंट्सने समृद्ध']
           },
           {
-            id: 'mango',
-            name: 'Mango',
-            marathiName: 'आंबा',
-            emoji: '🥭',
-            image: '/mango.png',
-            price: 80,
-            unit: 'dozen',
-            bgClass: 'card-mango-bg',
-            titleClass: 'orange-t',
-            btnClass: 'orange-btn',
+            id: 'mango', name: 'Mango', marathiName: 'आंबा', emoji: '🥭',
+            image: '/mango_farm.png', price: 80, unit: 'dozen',
+            bgClass: 'card-mango-bg', titleClass: 'orange-t', btnClass: 'orange-btn',
             featuresEn: ['Naturally Ripened', 'Juicy & Sweet', 'Premium Quality', 'Seasonal Delight'],
             featuresMr: ['नैसर्गिक रीतीने पिकवलेले', 'रसाळ व गोड', 'प्रीमियम गुणवत्ता', 'हंगामातील मेजवानी']
           },
           {
-            id: 'guava',
-            name: 'Guava',
-            marathiName: 'पेरू',
-            emoji: '🍈',
-            image: '/guava.png',
-            price: 40,
-            unit: 'kg',
-            bgClass: 'card-guava-bg',
-            titleClass: 'bright-green-t',
-            btnClass: 'bright-green-btn',
+            id: 'guava', name: 'Guava', marathiName: 'पेरू', emoji: '🍈',
+            image: '/guava_farm.png', price: 40, unit: 'kg',
+            bgClass: 'card-guava-bg', titleClass: 'bright-green-t', btnClass: 'bright-green-btn',
             featuresEn: ['Vitamin C Rich', 'Chemical Free', 'Organic Farming', 'Fresh Harvest'],
             featuresMr: ['व्हिटॅमिन सी ने समृद्ध', 'केमिकल फ्री', 'सेंद्रिय शेती', 'ताजी काढणी']
           }
@@ -66,21 +56,30 @@ export const Products = () => {
   }, []);
 
   return (
-    <section className="products-section" id="products">
+    <section className="products-section" id="products" ref={sectionRef}>
       <div className="container">
-        <div className="section-header center">
-          <h2 className="section-title-serif">{t('prod.sectionTitle')}</h2>
-          <p className="section-subtitle-main">{t('prod.sectionSub')}</p>
+
+        {/* Title */}
+        <div className={`section-heading-block ${sectionVisible ? 'section-heading-block--in' : ''}`}>
+          <span className="shb-eyebrow">🍃 OUR PRODUCTS</span>
+          <h2 className="shb-title">{t('prod.sectionTitle')}</h2>
+          <div className="shb-underline" />
+          <p className="shb-subtitle">{t('prod.sectionSub')}</p>
         </div>
 
+        {/* Cards — each slides up with stagger */}
         <div className="products-grid-h">
-          {productList.map(item => {
+          {productList.map((item, idx) => {
             const isMr = lang === 'mr';
             const features = isMr ? item.featuresMr : item.featuresEn;
             const title = isMr ? item.marathiName : item.name;
 
             return (
-              <div key={item.id} className={`product-h-card ${item.bgClass}`}>
+              <div
+                key={item.id}
+                className={`product-h-card ${item.bgClass} prod-anim-up ${sectionVisible ? 'prod-anim-up--visible' : ''}`}
+                style={{ animationDelay: sectionVisible ? `${0.15 + idx * 0.18}s` : '0s' }}
+              >
                 <div className="product-h-img-col">
                   <img src={item.image} alt={item.name} className="product-h-img" />
                 </div>
@@ -91,8 +90,8 @@ export const Products = () => {
                   </div>
 
                   <ul className="product-h-features">
-                    {features.map((feat, idx) => (
-                      <li key={idx}>
+                    {features.map((feat, i) => (
+                      <li key={i}>
                         <span className={`chk ${item.id === 'mango' ? 'gold' : ''}`}>✓</span> {feat}
                       </li>
                     ))}

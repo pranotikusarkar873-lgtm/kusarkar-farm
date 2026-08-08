@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { useCart } from '../context/CartContext';
+import { AnimatedTitle } from './AnimatedTitle';
 
 export const Contact = () => {
   const { t } = useLanguage();
@@ -63,12 +64,13 @@ export const Contact = () => {
   return (
     <section className="contact-section" id="contact">
       <div className="container">
-        <div className="section-header center">
-          <div className="section-badge">{t('contact.badge')}</div>
-          <h2 className="section-title-serif">
+        <div className="section-heading-block section-heading-block--in">
+          <span className="shb-eyebrow">{t('contact.badge')}</span>
+          <h2 className="shb-title">
             {t('contact.title1')} <span className="text-green-hero">{t('contact.title2')}</span>
           </h2>
-          <p className="section-subtitle-main">{t('contact.sub')}</p>
+          <div className="shb-underline" />
+          <p className="shb-subtitle">{t('contact.sub')}</p>
         </div>
 
         <div className="contact-grid">

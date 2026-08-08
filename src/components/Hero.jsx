@@ -26,20 +26,23 @@ export const Hero = () => {
       </div>
 
       <div className="container hero-container">
-        {/* Left Content */}
+        {/* Left Content — slides in from left, staggered */}
         <div className="hero-left-content">
-          <div className="hero-tag">
+
+          <div className="hero-tag hero-anim-left" style={{ animationDelay: '0.1s' }}>
             🍃 {t('hero.tag')}
           </div>
 
-          <h1 className="hero-main-title">
+          <h1 className="hero-main-title hero-anim-left" style={{ animationDelay: '0.3s' }}>
             {t('hero.title1')}<br />
             <span className="text-green-hero">{t('hero.title2')}</span>
           </h1>
 
-          <p className="hero-desc">{t('hero.desc')}</p>
+          <p className="hero-desc hero-anim-left" style={{ animationDelay: '0.55s' }}>
+            {t('hero.desc')}
+          </p>
 
-          <div className="hero-btn-row">
+          <div className="hero-btn-row hero-anim-left" style={{ animationDelay: '0.75s' }}>
             <a href="#products" className="btn-explore-hero">
               {t('hero.btnExplore')}
             </a>
@@ -48,9 +51,9 @@ export const Hero = () => {
             </a>
           </div>
 
-          {/* 3 Creative Floating Feature Cards */}
+          {/* Feature cards — slide in from right, staggered */}
           <div className="hero-features-creative">
-            <div className="hf-creative-card">
+            <div className="hf-creative-card hero-anim-right" style={{ animationDelay: '0.9s' }}>
               <div className="hf-creative-icon-wrap icon-sprout">
                 <span>🌱</span>
               </div>
@@ -60,17 +63,7 @@ export const Hero = () => {
               </div>
             </div>
 
-            {/* <div className="hf-creative-card">
-              <div className="hf-creative-icon-wrap icon-leaf">
-                <span>🌿</span>
-              </div>
-              <div className="hf-creative-text">
-                <strong>{t('hero.f2Title')}</strong>
-                <small>{t('hero.f2Sub')}</small>
-              </div>
-            </div> */}
-
-            <div className="hf-creative-card">
+            <div className="hf-creative-card hero-anim-right" style={{ animationDelay: '1.1s' }}>
               <div className="hf-creative-icon-wrap icon-badge">
                 <span>🏵️</span>
               </div>
