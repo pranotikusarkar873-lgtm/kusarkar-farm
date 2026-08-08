@@ -58,7 +58,6 @@ export const WhyChooseUs = () => {
               {/* Icon */}
               <div className="why-card-icon-wrap">
                 <span className="why-card-icon">{feat.icon}</span>
-                <div className="why-card-icon-ring" />
               </div>
 
               {/* Text */}
