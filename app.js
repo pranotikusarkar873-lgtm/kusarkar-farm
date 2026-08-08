@@ -480,9 +480,9 @@ function handleFormSubmit(e) {
     return;
   }
 
-  const cleanPhone = phone.replace(/[\s\-\+\(\)]/g, '');
-  if (!cleanPhone || (!/^[6-9]\d{9}$/.test(cleanPhone) && !/^\d{10}$/.test(cleanPhone))) {
-    showToast('⚠️ Please enter a valid 10-digit mobile number', 'warn');
+  const cleanPhone = phone.replace(/\D/g, '');
+  if (!cleanPhone || cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
+    showToast('⚠️ Please enter a valid 10-digit mobile number (e.g. 9823456789)', 'warn');
     return;
   }
 

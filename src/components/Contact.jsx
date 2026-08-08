@@ -35,11 +35,11 @@ export const Contact = () => {
     }
 
     if (field === 'phone') {
-      const cleanPhone = trimmed.replace(/[\s\-\+\(\)]/g, '');
+      const cleanPhone = trimmed.replace(/\D/g, '');
       if (!cleanPhone) {
         err = isMr ? 'कृपया मोबाईल नंबर प्रविष्ट करा' : 'Please enter mobile number';
-      } else if (!/^[6-9]\d{9}$/.test(cleanPhone) && !/^\d{10}$/.test(cleanPhone)) {
-        err = isMr ? 'कृपया १०-अंकी वैध मोबाईल नंबर प्रविष्ट करा (उदा. 9823456789)' : 'Please enter a valid 10-digit mobile number';
+      } else if (cleanPhone.length !== 10 || !/^[6-9]\d{9}$/.test(cleanPhone)) {
+        err = isMr ? 'कृपया १०-अंकी वैध मोबाईल नंबर टाका (उदा. 9823456789)' : 'Please enter exactly a 10-digit mobile number';
       }
     }
 
@@ -177,9 +177,17 @@ export const Contact = () => {
                   type="tel"
                   id="phone"
                   value={formData.phone}
-                  onChange={handleChange}
+                  maxLength={10}
+                  onChange={(e) => {
+                    const digits = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setFormData(prev => ({ ...prev, phone: digits }));
+                    if (touched.phone) {
+                      const err = validateField('phone', digits);
+                      setErrors(prev => ({ ...prev, phone: err }));
+                    }
+                  }}
                   onBlur={handleBlur}
-                  placeholder="+91 94213 11949"
+                  placeholder="9823456789"
                   className={errors.phone && touched.phone ? 'input-error' : ''}
                 />
                 {errors.phone && touched.phone && (
