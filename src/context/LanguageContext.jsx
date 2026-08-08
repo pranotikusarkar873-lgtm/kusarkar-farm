@@ -93,7 +93,7 @@ const translations = {
 
     "contact.badge": "📍 Get In Touch",
     "contact.title1": "Visit",
-    "contact.title2": "Kusarkar Farm – Krushi Samrajya",
+    "contact.title2": "Kusarkar Farm",
     "contact.sub": "Connect with us for farm visits, fresh orders, or bulk inquiries",
     "contact.formTitle": "Send Us A Message",
     "contact.nameLabel": "Your Name *",
@@ -102,7 +102,7 @@ const translations = {
     "contact.msgLabel": "Your Requirement / Message",
     "contact.msgPlaceholder": "Tell us what fruits or quantity you need...",
     "contact.btnSend": "Send Message 💬",
-    "contact.krushiBadge": "🍇 Krushi Samrajya",
+    "contact.krushiBadge": "🍇 Kusarkar Farm",
     "contact.farmHeading": "Kusarkar Farm",
     "contact.farmTag": "Tasgaon, Dist. Sangli | Direct From Farm",
     "contact.addrTitle": "Farm Address",
@@ -116,7 +116,7 @@ const translations = {
     "contact.btnWa": "💬 WhatsApp",
     "contact.openMaps": "Open Location in Google Maps 📍",
     "contact.getDirections": "Get Driving Directions 🚗",
-    "contact.mapHeading": "Kusarkar Farm – Krushi Samrajya",
+    "contact.mapHeading": "Kusarkar Farm",
     "contact.mapSub": "📍 Tasgaon, Taluka Tasgaon, Dist. Sangli",
 
     "footer.brandName": "Kusarkar Farm",
@@ -226,7 +226,7 @@ const translations = {
 
     "contact.badge": "📍 संपर्क साधा",
     "contact.title1": "भेट द्या",
-    "contact.title2": "कुसरकर फार्म - कृषी साम्राज्य",
+    "contact.title2": "कुसरकर फार्म",
     "contact.sub": "शेताला भेट देण्यासाठी, ताज्या ऑर्डर्ससाठी किंवा मोठ्या प्रमाणात चौकशीसाठी आमच्याशी संपर्क साधा",
     "contact.formTitle": "आम्हाला मेसेज पाठवा",
     "contact.nameLabel": "तुमचे नाव *",
@@ -235,7 +235,7 @@ const translations = {
     "contact.msgLabel": "तुमची गरज / मेसेज",
     "contact.msgPlaceholder": "तुम्हाला कोणती फळे किंवा किती प्रमाण हवे आहे ते सांगा...",
     "contact.btnSend": "मेसेज पाठवा 💬",
-    "contact.krushiBadge": "🍇 कृषी साम्राज्य",
+    "contact.krushiBadge": "🍇 कुसरकर फार्म",
     "contact.farmHeading": "कुसरकर फार्म",
     "contact.farmTag": "तासगाव, जि. सांगली | थेट शेतातून",
     "contact.addrTitle": "फार्मचा पत्ता",
@@ -249,7 +249,7 @@ const translations = {
     "contact.btnWa": "💬 व्हॉट्सअ‍ॅप",
     "contact.openMaps": "गूगल मॅप्सवर लोकेशन पहा 📍",
     "contact.getDirections": "रस्ता व मार्ग शोधा (Directions) 🚗",
-    "contact.mapHeading": "कुसरकर फार्म - कृषी साम्राज्य",
+    "contact.mapHeading": "कुसरकर फार्म",
     "contact.mapSub": "📍 तासगाव, ता. तासगाव, जि. सांगली",
 
     "footer.brandName": "कुसरकर फार्म",
