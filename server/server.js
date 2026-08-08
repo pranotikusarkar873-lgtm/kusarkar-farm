@@ -30,7 +30,7 @@ const products = [
     emoji: '🥭',
     image: '/mango_farm.png',
     price: 80,
-    unit: 'dozen',
+    unit: 'kg',
     bgClass: 'card-mango-bg',
     titleClass: 'orange-t',
     btnClass: 'orange-btn',

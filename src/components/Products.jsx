@@ -39,7 +39,7 @@ export const Products = () => {
           },
           {
             id: 'mango', name: 'Mango', marathiName: 'आंबा', emoji: '🥭',
-            image: '/mango_farm.png', price: 80, unit: 'dozen',
+            image: '/mango_farm.png', price: 80, unit: 'kg',
             bgClass: 'card-mango-bg', titleClass: 'orange-t', btnClass: 'orange-btn',
             featuresEn: ['Naturally Ripened', 'Juicy & Sweet', 'Premium Quality', 'Seasonal Delight'],
             featuresMr: ['नैसर्गिक रीतीने पिकवलेले', 'रसाळ व गोड', 'प्रीमियम गुणवत्ता', 'हंगामातील मेजवानी']

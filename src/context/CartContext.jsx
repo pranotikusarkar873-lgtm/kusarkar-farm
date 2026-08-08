@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext, useEffect } from 'react';
 const CartContext = createContext();
 
 const initialProducts = {
-  mango: { id: 'mango', name: 'Kesar Mango', marathiName: 'केशर आंबा', emoji: '🥭', price: 80, unit: 'dozen' },
+  mango: { id: 'mango', name: 'Kesar Mango', marathiName: 'केशर आंबा', emoji: '🥭', price: 80, unit: 'kg' },
   grapes: { id: 'grapes', name: 'Grapes', marathiName: 'द्राक्षे', emoji: '🍇', price: 60, unit: 'kg' },
   guava: { id: 'guava', name: 'Fresh Guava', marathiName: 'ताजे पेरू', emoji: '🍈', price: 40, unit: 'kg' },
 };

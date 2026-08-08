@@ -4,7 +4,7 @@
 
 // ---- CART STATE ----
 const products = {
-  mango: { name: 'Kesar Mango', emoji: '🥭', price: 80, unit: 'dozen' },
+  mango: { name: 'Kesar Mango', emoji: '🥭', price: 80, unit: 'kg' },
   grapes: { name: 'Black Grapes', emoji: '🍇', price: 60, unit: 'kg' },
   guava: { name: 'Fresh Guava', emoji: '🍈', price: 40, unit: 'kg' },
 };
