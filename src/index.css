@@ -14,14 +14,26 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
 }
 
 body {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #f7fbf7;
   color: #1b2e1b;
-  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+  position: relative;
   line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 img {

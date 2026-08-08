@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { AnimatedTitle } from './AnimatedTitle';
 
 // Animated counter
 const CountUp = ({ target, suffix = '' }) => {
@@ -76,16 +75,6 @@ export const About = () => {
 
           {/* LEFT — text content */}
           <div className="about-left">
-
-            <div
-              className={`about-anim-left ${visible ? 'about-anim--in' : ''}`}
-              style={{ transitionDelay: '0.2s' }}
-            >
-              <AnimatedTitle className="about-main-heading">
-                {t('about.title1')}<br />
-                <span className="text-green-hero">{t('about.title2')}</span>
-              </AnimatedTitle>
-            </div>
 
             <p
               className={`about-desc-para about-anim-left ${visible ? 'about-anim--in' : ''}`}
