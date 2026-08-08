@@ -2791,8 +2791,13 @@ ul {
     padding: 2.2rem 0;
   }
 
-  .section-header {
-    margin-bottom: 1.3rem;
+  .section-header,
+  .section-heading-block {
+    margin-bottom: 1.5rem;
+  }
+
+  .shb-title {
+    font-size: clamp(1.6rem, 5.5vw, 2.2rem);
   }
 
   /* Products: 1 per row full-width cards */
