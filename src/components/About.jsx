@@ -78,18 +78,35 @@ export const About = () => {
 
             <p
               className={`about-desc-para about-anim-left ${visible ? 'about-anim--in' : ''}`}
-              style={{ transitionDelay: '0.35s' }}
+              style={{ transitionDelay: '0.25s' }}
             >
               {t('about.desc')}
             </p>
 
-            <a
-              href="#contact"
-              className={`btn-know-more about-anim-left ${visible ? 'about-anim--in' : ''}`}
-              style={{ transitionDelay: '0.5s' }}
+            <p
+              className={`about-desc-para about-anim-left ${visible ? 'about-anim--in' : ''}`}
+              style={{ transitionDelay: '0.4s', marginTop: '0.85rem' }}
             >
-              {t('about.btn')}
-            </a>
+              {t('about.desc2')}
+            </p>
+
+            <div
+              className={`about-highlights-list about-anim-left ${visible ? 'about-anim--in' : ''}`}
+              style={{ transitionDelay: '0.55s', marginTop: '1.2rem' }}
+            >
+              <div className="about-hl-item">
+                <span className="hl-icon">🌿</span>
+                <span>{t('about.hl1')}</span>
+              </div>
+              <div className="about-hl-item">
+                <span className="hl-icon">🍇</span>
+                <span>{t('about.hl2')}</span>
+              </div>
+              <div className="about-hl-item">
+                <span className="hl-icon">🚚</span>
+                <span>{t('about.hl3')}</span>
+              </div>
+            </div>
           </div>
 
           {/* RIGHT — stats cards */}
