@@ -113,6 +113,7 @@ const translations = {
     "contact.btnCall": "📞 Call Us",
     "contact.btnWa": "💬 WhatsApp",
     "contact.openMaps": "Open Location in Google Maps 📍",
+    "contact.getDirections": "Get Driving Directions 🚗",
     "contact.mapHeading": "Kusarkar Farm – Krushi Samrajya",
     "contact.mapSub": "📍 Tasgaon, Taluka Tasgaon, Dist. Sangli",
 
@@ -243,6 +244,7 @@ const translations = {
     "contact.btnCall": "📞 कॉल करा",
     "contact.btnWa": "💬 व्हॉट्सअ‍ॅप",
     "contact.openMaps": "गूगल मॅप्सवर लोकेशन पहा 📍",
+    "contact.getDirections": "रस्ता व मार्ग शोधा (Directions) 🚗",
     "contact.mapHeading": "कुसरकर फार्म - कृषी साम्राज्य",
     "contact.mapSub": "📍 तासगाव, ता. तासगाव, जि. सांगली",
 

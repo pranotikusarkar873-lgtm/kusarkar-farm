@@ -197,14 +197,24 @@ export const Contact = () => {
               loading="lazy"
             ></iframe>
 
-            <a
-              href="https://www.google.com/maps/place/Kusarkar+Krushi+Samrajya/@17.05705,74.5721544,833m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3bc1150007cefb27:0xd794cba396dbc17!8m2!3d17.05705!4d74.5721544"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-open-maps"
-            >
-              {t('contact.openMaps')}
-            </a>
+            <div className="map-btn-row">
+              <a
+                href="https://www.google.com/maps/dir/?api=1&destination=17.0570549,74.5695794"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-get-directions"
+              >
+                {t('contact.getDirections')}
+              </a>
+              <a
+                href="https://www.google.com/maps/place/Kusarkar+Krushi+Samrajya/@17.0570549,74.5695794,17z"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-open-maps"
+              >
+                {t('contact.openMaps')}
+              </a>
+            </div>
           </div>
         </div>
       </div>
