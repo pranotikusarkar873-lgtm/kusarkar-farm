@@ -28,7 +28,7 @@ export const Gallery = () => {
     { src: '/gallery_grapes.png',       alt: 'Fresh Black Grapes',          span: 'square', tag: '🍇 Grapes', tagMr: '🍇 काळी द्राक्षे' },
     { src: '/gallery_mango_box.jpg',    alt: 'Mango Box Ready for Delivery',span: 'wide', tag: '📦 Export Box', tagMr: '📦 पॅक बॉक्स' },
     { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square', tag: '🍃 Organic', tagMr: '🍃 सेंद्रिय' },
-    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide', tag: '🌾 Vineyard', tagMr: '🌾 द्राक्ष बाग' },
+    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Farm',               span: 'wide', tag: '🌾 Farm', tagMr: '🌾 फार्म' },
     { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall', tag: '👨‍🌾 Harvesting', tagMr: '👨‍🌾 फळकाढणी' },
     { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square', tag: '✨ Quality', tagMr: '✨ गुणवत्ता' },
     { src: '/gallery_green_grapes.jpg', alt: 'Fresh Green Grapes',          span: 'square', tag: '🍇 Green Grapes', tagMr: '🍇 हिरवी द्राक्षे' },

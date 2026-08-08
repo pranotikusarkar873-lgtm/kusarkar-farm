@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="hero-full-bg">
         <img
           src="/kusarkar_wide_banner.jpg"
-          alt="Kusarkar Farm Golden Sunset Vineyard Banner"
+          alt="Kusarkar Farm Golden Sunset Banner"
           className="hero-banner-img"
         />
         <div className="hero-banner-overlay hero-white-shade-overlay"></div>
