@@ -6,6 +6,8 @@ export const StickyMobileOrderBtn = () => {
   const { t } = useLanguage();
   const { cartItemCount, toggleCart } = useCart();
 
+  if (cartItemCount === 0) return null;
+
   return (
     <div className="sticky-mobile-bar-wrap">
       <button className="sticky-mobile-order-btn" onClick={toggleCart}>
