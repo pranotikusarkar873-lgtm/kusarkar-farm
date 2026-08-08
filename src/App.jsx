@@ -10,6 +10,7 @@ import { WhyChooseUs } from './components/WhyChooseUs';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { CartSidebar } from './components/CartSidebar';
+import { UserInfoModal } from './components/UserInfoModal';
 
 const ToastContainer = () => {
   const { toast } = useCart();
@@ -22,6 +23,12 @@ const ToastContainer = () => {
       </div>
     </div>
   );
+};
+
+const UserModalGlobal = () => {
+  const { showUserModal, saveUserInfo } = useCart();
+  if (!showUserModal) return null;
+  return <UserInfoModal onSave={saveUserInfo} />;
 };
 
 function MainApp() {
@@ -39,6 +46,7 @@ function MainApp() {
       <Footer />
       <CartSidebar />
       <ToastContainer />
+      <UserModalGlobal />
     </div>
   );
 }

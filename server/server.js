@@ -91,7 +91,7 @@ app.post('/api/contact', (req, res) => {
 
 // Order Placement Handler
 app.post('/api/orders', (req, res) => {
-  const { items } = req.body; // { mango: 2, grapes: 1 }
+  const { items, user } = req.body; // { mango: 2, grapes: 1 }, { name, mobile }
 
   if (!items || Object.keys(items).length === 0) {
     return res.status(400).json({ success: false, error: 'Cart is empty' });
@@ -99,6 +99,12 @@ app.post('/api/orders', (req, res) => {
 
   let total = 0;
   let orderSummary = '🌿 *Kusarkar Farm Order*\n\n';
+
+  // Include customer info if provided
+  if (user && user.name) {
+    orderSummary += `👤 *Customer:* ${user.name}\n`;
+    orderSummary += `📞 *Mobile:* ${user.mobile}\n\n`;
+  }
 
   Object.keys(items).forEach(id => {
     const qty = items[id];

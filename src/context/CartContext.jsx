@@ -10,20 +10,44 @@ const initialProducts = {
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem('kf-cart')) || {};
-    } catch (e) {
-      return {};
-    }
+    try { return JSON.parse(localStorage.getItem('kf-cart')) || {}; }
+    catch (e) { return {}; }
   });
 
   const [quantities, setQuantities] = useState({ mango: 1, grapes: 1, guava: 1 });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toast, setToast] = useState(null);
 
+  // User info — persisted in localStorage
+  const [userInfo, setUserInfo] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('kf-user')) || null; }
+    catch (e) { return null; }
+  });
+
+  // Order history — persisted per user in localStorage
+  const [orderHistory, setOrderHistory] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('kf-history')) || []; }
+    catch (e) { return []; }
+  });
+
+  const [showUserModal, setShowUserModal] = useState(false);
+  const [pendingAddId, setPendingAddId] = useState(null);
+
   useEffect(() => {
     localStorage.setItem('kf-cart', JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    if (userInfo) {
+      localStorage.setItem('kf-user', JSON.stringify(userInfo));
+    } else {
+      localStorage.removeItem('kf-user');
+    }
+  }, [userInfo]);
+
+  useEffect(() => {
+    localStorage.setItem('kf-history', JSON.stringify(orderHistory));
+  }, [orderHistory]);
 
   const showToast = (message, type = 'success') => {
     setToast({ id: Date.now(), message, type });
@@ -37,30 +61,45 @@ export const CartProvider = ({ children }) => {
     }));
   };
 
-  const addToCart = (id) => {
+  const _doAddToCart = (id) => {
     const qtyToAdd = quantities[id] || 1;
-    setCart(prev => ({
-      ...prev,
-      [id]: (prev[id] || 0) + qtyToAdd
-    }));
+    setCart(prev => ({ ...prev, [id]: (prev[id] || 0) + qtyToAdd }));
     const product = initialProducts[id];
     showToast(`🛒 ${product.name} × ${qtyToAdd} added to cart!`);
   };
 
-  const updateCartItemQty = (id, qty) => {
-    if (qty <= 0) {
-      removeFromCart(id);
+  const addToCart = (id) => {
+    if (!userInfo) {
+      setPendingAddId(id);
+      setShowUserModal(true);
     } else {
-      setCart(prev => ({ ...prev, [id]: qty }));
+      _doAddToCart(id);
     }
   };
 
+  const saveUserInfo = (info) => {
+    setUserInfo(info);
+    setShowUserModal(false);
+    if (pendingAddId) {
+      setTimeout(() => {
+        _doAddToCart(pendingAddId);
+        setPendingAddId(null);
+      }, 50);
+    }
+  };
+
+  const clearUserInfo = () => {
+    setUserInfo(null);
+    showToast('👋 Logged out. You can enter new details next time.');
+  };
+
+  const updateCartItemQty = (id, qty) => {
+    if (qty <= 0) removeFromCart(id);
+    else setCart(prev => ({ ...prev, [id]: qty }));
+  };
+
   const removeFromCart = (id) => {
-    setCart(prev => {
-      const next = { ...prev };
-      delete next[id];
-      return next;
-    });
+    setCart(prev => { const n = { ...prev }; delete n[id]; return n; });
   };
 
   const clearCart = () => {
@@ -70,28 +109,58 @@ export const CartProvider = ({ children }) => {
 
   const toggleCart = () => setIsCartOpen(prev => !prev);
 
+  // Helper — build a history entry snapshot from current cart
+  const _buildHistoryEntry = (cartSnapshot) => {
+    const activeKeys = Object.keys(cartSnapshot).filter(k => cartSnapshot[k] > 0);
+    let total = 0;
+    const items = activeKeys.map(id => {
+      const p = initialProducts[id];
+      const qty = cartSnapshot[id];
+      const lineTotal = p.price * qty;
+      total += lineTotal;
+      return { id, emoji: p.emoji, name: p.name, marathiName: p.marathiName, qty, unit: p.unit, lineTotal };
+    });
+    return {
+      id: Date.now(),
+      date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }),
+      time: new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }),
+      items,
+      total,
+    };
+  };
+
   const placeOrder = async () => {
     const activeKeys = Object.keys(cart).filter(k => cart[k] > 0);
     if (activeKeys.length === 0) return;
 
+    // Snapshot cart before clearing
+    const cartSnapshot = { ...cart };
+
     try {
-      // Call Node.js Backend API
       const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart })
+        body: JSON.stringify({ items: cart, user: userInfo })
       });
       const data = await res.json();
 
       if (data.success && data.whatsappUrl) {
         window.open(data.whatsappUrl, '_blank');
-        showToast('📦 Opening WhatsApp for checkout!');
+        // Save to history
+        setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
+        setCart({});
+        setIsCartOpen(false);
+        showToast('✅ Order placed! Cart cleared.');
       } else {
         throw new Error(data.error || 'Failed to generate WhatsApp link');
       }
     } catch (err) {
       // Fallback direct WhatsApp redirect
       let msg = '🌿 *Kusarkar Fruits Order*\n\n';
+      if (userInfo) {
+        msg += `👤 *Customer:* ${userInfo.name}\n`;
+        msg += `📞 *Mobile:* ${userInfo.mobile}\n\n`;
+      }
       let total = 0;
       activeKeys.forEach(id => {
         const p = initialProducts[id];
@@ -103,6 +172,11 @@ export const CartProvider = ({ children }) => {
       msg += `\n💰 *Total: ₹${total}*\n\nPlease confirm my order. Thank you!`;
       const url = `https://wa.me/919421311949?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
+      // Save to history even on fallback
+      setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
+      setCart({});
+      setIsCartOpen(false);
+      showToast('✅ Order placed! Cart cleared.');
     }
   };
 
@@ -115,8 +189,13 @@ export const CartProvider = ({ children }) => {
       quantities,
       isCartOpen,
       toast,
+      userInfo,
+      showUserModal,
+      orderHistory,
       changeQty,
       addToCart,
+      saveUserInfo,
+      clearUserInfo,
       updateCartItemQty,
       removeFromCart,
       clearCart,
