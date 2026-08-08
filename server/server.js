@@ -98,15 +98,15 @@ app.post('/api/orders', (req, res) => {
   }
 
   let total = 0;
-  let orderSummary = '🌿 *नमस्कार कुसरकर फार्म! (New Fruit Order)* 🌿\n\n' +
-    'मी तुमच्या वेबसाईटवरून खालील ताज्या फळांची ऑर्डर देत आहे:\n\n';
+  let orderSummary = '🌿 *KUSARKAR FARM – NEW FRUIT ORDER* 🌿\n\n' +
+    'Hello Kusarkar Farm! I would like to place an order from your website:\n\n';
 
   if (user && user.name) {
-    orderSummary += `👤 *ग्राहकाचे नाव (Customer):* ${user.name}\n`;
-    orderSummary += `📞 *मोबाईल नंबर (Mobile):* ${user.mobile}\n\n`;
+    orderSummary += `👤 *Customer Name:* ${user.name}\n`;
+    orderSummary += `📞 *Mobile Number:* ${user.mobile}\n\n`;
   }
 
-  orderSummary += '📋 *ऑर्डर केलेल्या फळांची यादी (Ordered Fruits):*\n';
+  orderSummary += '📋 *Order Details:*\n';
 
   Object.keys(items).forEach(id => {
     const qty = items[id];
@@ -114,11 +114,11 @@ app.post('/api/orders', (req, res) => {
     if (item && qty > 0) {
       const lineTotal = item.price * qty;
       total += lineTotal;
-      orderSummary += `${item.emoji} ${item.marathiName} (${item.name}) × ${qty} ${item.unit} = ₹${lineTotal}\n`;
+      orderSummary += `${item.emoji} ${item.name} × ${qty} ${item.unit} = ₹${lineTotal}\n`;
     }
   });
 
-  orderSummary += `\n💰 *एकूण बिल (Total Amount): ₹${total}*\n📍 *डिलिव्हरी ठिकाण:* तासगाव, जि. सांगली\n\n----------------------------------\n🙏 *कृपया माझी ही ऑर्डर स्वीकारावी व डिलिव्हरीच्या वेळेची पुष्टी करावी. धन्यवाद!*`;
+  orderSummary += `\n💰 *Total Amount: ₹${total}*\n📍 *Location:* Tasgaon, Dist. Sangli\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
 
   const farmerPhone = '919421311949';
   const whatsappUrl = `https://wa.me/${farmerPhone}?text=${encodeURIComponent(orderSummary)}`;
