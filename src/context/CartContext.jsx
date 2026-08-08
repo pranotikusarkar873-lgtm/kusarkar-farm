@@ -24,14 +24,13 @@ export const CartProvider = ({ children }) => {
     catch (e) { return null; }
   });
 
-  // Order history — persisted per user in localStorage
+  // Order history — persisted in localStorage
   const [orderHistory, setOrderHistory] = useState(() => {
     try { return JSON.parse(localStorage.getItem('kf-history')) || []; }
     catch (e) { return []; }
   });
 
   const [showUserModal, setShowUserModal] = useState(false);
-  const [pendingAddId, setPendingAddId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('kf-cart', JSON.stringify(cart));
@@ -61,36 +60,12 @@ export const CartProvider = ({ children }) => {
     }));
   };
 
-  const _doAddToCart = (id) => {
+  // Direct Add to Cart — NO login/details popup on Add to Cart
+  const addToCart = (id) => {
     const qtyToAdd = quantities[id] || 1;
     setCart(prev => ({ ...prev, [id]: (prev[id] || 0) + qtyToAdd }));
     const product = initialProducts[id];
-    showToast(`🛒 ${product.name} × ${qtyToAdd} added to cart!`);
-  };
-
-  const addToCart = (id) => {
-    if (!userInfo) {
-      setPendingAddId(id);
-      setShowUserModal(true);
-    } else {
-      _doAddToCart(id);
-    }
-  };
-
-  const saveUserInfo = (info) => {
-    setUserInfo(info);
-    setShowUserModal(false);
-    if (pendingAddId) {
-      setTimeout(() => {
-        _doAddToCart(pendingAddId);
-        setPendingAddId(null);
-      }, 50);
-    }
-  };
-
-  const clearUserInfo = () => {
-    setUserInfo(null);
-    showToast('👋 Logged out. You can enter new details next time.');
+    showToast(`🛒 ${product ? product.name : 'Fruit'} × ${qtyToAdd} added to cart!`);
   };
 
   const updateCartItemQty = (id, qty) => {
@@ -109,7 +84,7 @@ export const CartProvider = ({ children }) => {
 
   const toggleCart = () => setIsCartOpen(prev => !prev);
 
-  // Helper — build a history entry snapshot from current cart
+  // Helper — build history entry snapshot
   const _buildHistoryEntry = (cartSnapshot) => {
     const activeKeys = Object.keys(cartSnapshot).filter(k => cartSnapshot[k] > 0);
     let total = 0;
@@ -129,24 +104,23 @@ export const CartProvider = ({ children }) => {
     };
   };
 
-  const placeOrder = async () => {
+  // Core order execution via API or WhatsApp redirect
+  const _executeOrder = async (currentUserInfo = userInfo) => {
     const activeKeys = Object.keys(cart).filter(k => cart[k] > 0);
     if (activeKeys.length === 0) return;
 
-    // Snapshot cart before clearing
     const cartSnapshot = { ...cart };
 
     try {
       const res = await fetch('/api/orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: cart, user: userInfo })
+        body: JSON.stringify({ items: cart, user: currentUserInfo })
       });
       const data = await res.json();
 
       if (data.success && data.whatsappUrl) {
         window.open(data.whatsappUrl, '_blank');
-        // Save to history
         setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
         setCart({});
         setIsCartOpen(false);
@@ -157,9 +131,9 @@ export const CartProvider = ({ children }) => {
     } catch (err) {
       // Fallback direct WhatsApp redirect
       let msg = '🌿 *Kusarkar Fruits Order*\n\n';
-      if (userInfo) {
-        msg += `👤 *Customer:* ${userInfo.name}\n`;
-        msg += `📞 *Mobile:* ${userInfo.mobile}\n\n`;
+      if (currentUserInfo) {
+        msg += `👤 *Customer:* ${currentUserInfo.name}\n`;
+        msg += `📞 *Mobile:* ${currentUserInfo.mobile}\n\n`;
       }
       let total = 0;
       activeKeys.forEach(id => {
@@ -172,12 +146,40 @@ export const CartProvider = ({ children }) => {
       msg += `\n💰 *Total: ₹${total}*\n\nPlease confirm my order. Thank you!`;
       const url = `https://wa.me/919421311949?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
-      // Save to history even on fallback
       setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
       setCart({});
       setIsCartOpen(false);
       showToast('✅ Order placed! Cart cleared.');
     }
+  };
+
+  // Triggered when user clicks "Place Order via WhatsApp" inside cart
+  const placeOrder = () => {
+    const activeKeys = Object.keys(cart).filter(k => cart[k] > 0);
+    if (activeKeys.length === 0) return;
+
+    // If user info is not saved yet, prompt user details modal first!
+    if (!userInfo) {
+      setShowUserModal(true);
+      return;
+    }
+
+    // User is already logged in / info exists — directly place order!
+    _executeOrder(userInfo);
+  };
+
+  // Saved user info from modal — save in localStorage and immediately place order
+  const saveUserInfo = (info) => {
+    setUserInfo(info);
+    setShowUserModal(false);
+    setTimeout(() => {
+      _executeOrder(info);
+    }, 50);
+  };
+
+  const clearUserInfo = () => {
+    setUserInfo(null);
+    showToast('👋 Details cleared. You can enter new details next time.');
   };
 
   const cartItemCount = Object.values(cart).reduce((sum, q) => sum + q, 0);
