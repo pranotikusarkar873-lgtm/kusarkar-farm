@@ -124,7 +124,7 @@ export const Contact = () => {
                   rows="3"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us what fruits or quantity you need..."
+                  placeholder={t('contact.msgPlaceholder')}
                 ></textarea>
               </div>
 
@@ -137,8 +137,8 @@ export const Contact = () => {
           {/* Middle: Farm Details Card */}
           <div className="visit-info-card">
             <div className="farm-brand-header">
-              <span className="fb-badge">🍇 Krushi Samrajya</span>
-              <h3 className="farm-name-heading">Kusarkar Farm</h3>
+              <span className="fb-badge">{t('contact.krushiBadge')}</span>
+              <h3 className="farm-name-heading">{t('contact.farmHeading')}</h3>
               <p className="farm-tagline">{t('contact.farmTag')}</p>
             </div>
 
@@ -182,8 +182,8 @@ export const Contact = () => {
             <div className="map-top-banner">
               <span className="live-pin-pulse"></span>
               <div className="map-banner-text">
-                <strong>Kusarkar Farm – Krushi Samrajya</strong>
-                <small>📍 Tasgaon, Taluka Tasgaon, Dist. Sangli</small>
+                <strong>{t('contact.mapHeading')}</strong>
+                <small>{t('contact.mapSub')}</small>
               </div>
             </div>
 

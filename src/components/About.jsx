@@ -65,8 +65,8 @@ export const About = () => {
 
         {/* ── Centred Section Heading ── */}
         <div className={`section-heading-block ${visible ? 'section-heading-block--in' : ''}`}>
-          <span className="shb-eyebrow">About</span>
-          <h2 className="shb-title">About <span className="text-green-hero">Kusarkar Farm</span></h2>
+          <span className="shb-eyebrow">{t('about.eyebrow')}</span>
+          <h2 className="shb-title">{t('about.titleMain1')} <span className="text-green-hero">{t('about.titleMain2')}</span></h2>
           <div className="shb-underline" />
         </div>
 

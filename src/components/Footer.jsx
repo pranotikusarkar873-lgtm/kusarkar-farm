@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="footer-col brand-col">
           <div className="footer-logo">
             <img src="/logo.png" alt="Kusarkar Farm Logo" className="footer-logo-img" />
-            <strong>Kusarkar Farm</strong>
+            <strong>{t('footer.brandName')}</strong>
           </div>
           <p className="footer-tagline">{t('footer.tagline')}</p>
         </div>

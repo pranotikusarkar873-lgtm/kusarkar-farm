@@ -61,7 +61,7 @@ export const Products = () => {
 
         {/* Title */}
         <div className={`section-heading-block ${sectionVisible ? 'section-heading-block--in' : ''}`}>
-          <span className="shb-eyebrow">🍃 OUR PRODUCTS</span>
+          <span className="shb-eyebrow">{t('prod.eyebrow')}</span>
           <h2 className="shb-title">{t('prod.sectionTitle')}</h2>
           <div className="shb-underline" />
           <p className="shb-subtitle">{t('prod.sectionSub')}</p>
@@ -73,6 +73,7 @@ export const Products = () => {
             const isMr = lang === 'mr';
             const features = isMr ? item.featuresMr : item.featuresEn;
             const title = isMr ? item.marathiName : item.name;
+            const unitLabel = isMr ? (item.unit === 'kg' ? 'किलो' : item.unit === 'dozen' ? 'डझन' : item.unit) : item.unit;
 
             return (
               <div
@@ -98,7 +99,7 @@ export const Products = () => {
                   </ul>
 
                   <div className="product-h-price-row">
-                    <span className="product-h-price">₹{item.price} <small>/ {item.unit}</small></span>
+                    <span className="product-h-price">₹{item.price} <small>/ {unitLabel}</small></span>
                     <div className="qty-selector-sm">
                       <button onClick={() => changeQty(item.id, -1)}>-</button>
                       <span>{quantities[item.id] || 1}</span>

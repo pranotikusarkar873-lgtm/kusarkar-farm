@@ -36,7 +36,7 @@ export const WhyChooseUs = () => {
       <div className="container">
 
         <div className={`section-heading-block ${visible ? 'section-heading-block--in' : ''}`}>
-          <span className="shb-eyebrow">🌿 WHY US</span>
+          <span className="shb-eyebrow">{t('why.eyebrow')}</span>
           <h2 className="shb-title">{t('why.title')}</h2>
           <div className="shb-underline" />
         </div>

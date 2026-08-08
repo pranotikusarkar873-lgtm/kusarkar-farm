@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const Gallery = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
+  const isMr = lang === 'mr';
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
 
@@ -19,19 +20,19 @@ export const Gallery = () => {
   }, []);
 
   const galleryImages = [
-    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Alphonso Mango Slices', span: 'tall', tag: '🥭 Alphonso' },
-    { src: '/gallery_guava_farm.jpg',   alt: 'Guava from the Farm',         span: 'tall', tag: '🍈 Farm Fresh' },
-    { src: '/gallery_grapes_box.jpg',   alt: 'Grapes Ready for Export',     span: 'square', tag: '🍇 Exports' },
-    { src: '/gallery_mango_harvest.jpg',alt: 'Mango Harvest from Farm',     span: 'tall', tag: '🥭 Harvest' },
-    { src: '/gallery_guava_fresh.jpg',  alt: 'Fresh Farm Guavas',           span: 'square', tag: '🍈 Guava' },
-    { src: '/gallery_grapes.png',       alt: 'Fresh Black Grapes',          span: 'square', tag: '🍇 Grapes' },
-    { src: '/gallery_mango_box.jpg',    alt: 'Mango Box Ready for Delivery',span: 'wide', tag: '📦 Export Box' },
-    { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square', tag: '🍃 Organic' },
-    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide', tag: '🌾 Vineyard' },
-    { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall', tag: '👨‍🌾 Harvesting' },
-    { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square', tag: '✨ Quality' },
-    { src: '/gallery_green_grapes.jpg', alt: 'Fresh Green Grapes',          span: 'square', tag: '🍇 Green Grapes' },
-    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide', tag: '🌿 50+ Acres' },
+    { src: '/gallery_mango_sliced.jpg', alt: 'Juicy Alphonso Mango Slices', span: 'tall', tag: '🥭 Alphonso', tagMr: '🥭 हापूस' },
+    { src: '/gallery_guava_farm.jpg',   alt: 'Guava from the Farm',         span: 'tall', tag: '🍈 Farm Fresh', tagMr: '🍈 ताजे पेरू' },
+    { src: '/gallery_grapes_box.jpg',   alt: 'Grapes Ready for Export',     span: 'square', tag: '🍇 Exports', tagMr: '🍇 निर्यात' },
+    { src: '/gallery_mango_harvest.jpg',alt: 'Mango Harvest from Farm',     span: 'tall', tag: '🥭 Harvest', tagMr: '🥭 फळकाढणी' },
+    { src: '/gallery_guava_fresh.jpg',  alt: 'Fresh Farm Guavas',           span: 'square', tag: '🍈 Guava', tagMr: '🍈 पेरू' },
+    { src: '/gallery_grapes.png',       alt: 'Fresh Black Grapes',          span: 'square', tag: '🍇 Grapes', tagMr: '🍇 काळी द्राक्षे' },
+    { src: '/gallery_mango_box.jpg',    alt: 'Mango Box Ready for Delivery',span: 'wide', tag: '📦 Export Box', tagMr: '📦 पॅक बॉक्स' },
+    { src: '/guava.png',                alt: 'Fresh Guavas',                span: 'square', tag: '🍃 Organic', tagMr: '🍃 सेंद्रिय' },
+    { src: '/gallery_vineyard.png',     alt: 'Kusarkar Vineyard',           span: 'wide', tag: '🌾 Vineyard', tagMr: '🌾 द्राक्ष बाग' },
+    { src: '/gallery_farmer.png',       alt: 'Farmer Harvesting Mangoes',   span: 'tall', tag: '👨‍🌾 Harvesting', tagMr: '👨‍🌾 फळकाढणी' },
+    { src: '/hero_fruits.png',          alt: 'Farm Fresh Fruits',           span: 'square', tag: '✨ Quality', tagMr: '✨ गुणवत्ता' },
+    { src: '/gallery_green_grapes.jpg', alt: 'Fresh Green Grapes',          span: 'square', tag: '🍇 Green Grapes', tagMr: '🍇 हिरवी द्राक्षे' },
+    { src: '/farm.png',                 alt: 'Kusarkar Farm Field',          span: 'wide', tag: '🌿 50+ Acres', tagMr: '🌿 ५०+ एकर' },
   ];
 
   // Open lightbox
@@ -71,7 +72,7 @@ export const Gallery = () => {
       <div className="container">
 
         <div className={`section-heading-block ${visible ? 'section-heading-block--in' : ''}`}>
-          <span className="shb-eyebrow">📸 FARM GALLERY</span>
+          <span className="shb-eyebrow">{t('gallery.eyebrow')}</span>
           <h2 className="shb-title">{t('gallery.title')}</h2>
           <div className="shb-underline" />
         </div>
@@ -89,7 +90,7 @@ export const Gallery = () => {
               aria-label={`View ${img.alt}`}
             >
               <img src={img.src} alt={img.alt} loading="lazy" />
-              {img.tag && <span className="gallery-tile-tag">{img.tag}</span>}
+              {img.tag && <span className="gallery-tile-tag">{isMr ? img.tagMr : img.tag}</span>}
               {/* Hover overlay hint */}
               <div className="gallery-tile-overlay">
                 <span className="gallery-tile-zoom">🔍</span>
