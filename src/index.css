@@ -2753,8 +2753,8 @@ ul {
 /* ── MOBILE LARGE / iOS / Android (≤768px) ────────────────── */
 @media (max-width: 768px) {
   .hero {
-    padding-top: 6.2rem;
-    padding-bottom: 1.8rem;
+    padding-top: 8.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .hero-main-title {
@@ -2921,13 +2921,14 @@ ul {
   }
 
   .hero {
-    padding-top: 6.8rem;
+    padding-top: 8.2rem;
     padding-bottom: 2.8rem;
   }
 
   .hero-tag {
     font-size: 0.72rem;
     padding: 0.35rem 0.9rem;
+    margin-top: 0.6rem;
     margin-bottom: 1.2rem;
     max-width: 95vw;
   }
