@@ -130,6 +130,10 @@ app.post('/api/orders', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🌿 Kusarkar Farm Node.js API Server running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🌿 Kusarkar Farm Node.js API Server running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
