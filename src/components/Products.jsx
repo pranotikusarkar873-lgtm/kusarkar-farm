@@ -46,7 +46,7 @@ export const Products = () => {
           },
           {
             id: 'guava', name: 'Guava', marathiName: 'पेरू', emoji: '🍈',
-            image: '/guava_farm.png', price: 40, unit: 'kg',
+            image: '/guava_farm.png', price: 100, unit: 'kg',
             bgClass: 'card-guava-bg', titleClass: 'bright-green-t', btnClass: 'bright-green-btn',
             featuresEn: ['Vitamin C Rich', 'Chemical Free', 'Organic Farming', 'Fresh Harvest'],
             featuresMr: ['व्हिटॅमिन सी ने समृद्ध', 'केमिकल फ्री', 'सेंद्रिय शेती', 'ताजी काढणी']

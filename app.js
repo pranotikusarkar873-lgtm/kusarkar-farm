@@ -462,7 +462,7 @@ function placeOrder() {
 
   msg += `\n💰 *Total: ₹${total}*\n\nPlease confirm my order and share delivery details. Thank you!`;
 
-  const phone = '919421311949';
+  const phone = '919112355227';
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
@@ -497,7 +497,7 @@ function handleFormSubmit(e) {
 
   const waMsg = `${emoji} *New Enquiry from Website*\n\n` +
     `👤 Name: ${name}\n📞 Phone: ${phone}\n🍎 Interested in: ${fruitLabel}\n\n💬 Message:\n${msg}`;
-  const url = `https://wa.me/919421311949?text=${encodeURIComponent(waMsg)}`;
+  const url = `https://wa.me/919112355227?text=${encodeURIComponent(waMsg)}`;
   window.open(url, '_blank');
 
   showToast('✅ Opening WhatsApp to send your message!');
