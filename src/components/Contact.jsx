@@ -270,8 +270,8 @@ export const Contact = () => {
             <div className="connect-box">
               <p className="connect-label">{t('contact.quickConnect')}</p>
               <div className="connect-btns">
-                <a href="tel:+919421311949" className="btn-connect call">{t('contact.btnCall')}</a>
-                <a href="https://wa.me/919421311949" target="_blank" rel="noreferrer" className="btn-connect whatsapp">{t('contact.btnWa')}</a>
+                <a href="tel:+919112355227" className="btn-connect call">{t('contact.btnCall')}</a>
+                <a href="https://wa.me/919112355227" target="_blank" rel="noreferrer" className="btn-connect whatsapp">{t('contact.btnWa')}</a>
               </div>
             </div>
           </div>

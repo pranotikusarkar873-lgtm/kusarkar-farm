@@ -73,7 +73,7 @@ app.post('/api/contact', (req, res) => {
     return res.status(400).json({ success: false, error: 'Name and Phone are required' });
   }
 
-  const farmerPhone = '919421311949';
+  const farmerPhone = '919112355227';
   const waMsg = `🌿 *New Website Enquiry - Kusarkar Farm*\n\n` +
     `👤 *Name:* ${name}\n` +
     `📞 *Phone:* ${phone}\n` +
@@ -120,7 +120,7 @@ app.post('/api/orders', (req, res) => {
 
   orderSummary += `\n💰 *Total Amount: ₹${total}*\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
 
-  const farmerPhone = '919421311949';
+  const farmerPhone = '919112355227';
   const whatsappUrl = `https://wa.me/${farmerPhone}?text=${encodeURIComponent(orderSummary)}`;
 
   res.json({
