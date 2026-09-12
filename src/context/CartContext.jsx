@@ -5,7 +5,7 @@ const CartContext = createContext();
 const initialProducts = {
   mango: { id: 'mango', name: 'Kesar Mango', marathiName: 'केशर आंबा', emoji: '🥭', price: 80, unit: 'kg' },
   grapes: { id: 'grapes', name: 'Grapes', marathiName: 'द्राक्षे', emoji: '🍇', price: 60, unit: 'kg' },
-  guava: { id: 'guava', name: 'Fresh Guava', marathiName: 'ताजे पेरू', emoji: '🍈', price: 40, unit: 'kg' },
+  guava: { id: 'guava', name: 'Fresh Guava', marathiName: 'ताजे पेरू', emoji: '🍈', price: 100, unit: 'kg' },
 };
 
 export const CartProvider = ({ children }) => {
@@ -146,7 +146,7 @@ export const CartProvider = ({ children }) => {
         msg += `${p.emoji} ${p.name} × ${qty} ${p.unit} = ₹${line}\n`;
       });
       msg += `\n💰 *Total Amount: ₹${total}*\n\n----------------------------------\n🙏 *Please accept my order and confirm the delivery time. Thank you!*`;
-      const url = `https://wa.me/919421311949?text=${encodeURIComponent(msg)}`;
+      const url = `https://wa.me/919112355227?text=${encodeURIComponent(msg)}`;
       window.open(url, '_blank');
       setOrderHistory(prev => [_buildHistoryEntry(cartSnapshot), ...prev].slice(0, 10));
       setCart({});

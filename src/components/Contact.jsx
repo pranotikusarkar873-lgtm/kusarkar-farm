@@ -122,7 +122,7 @@ export const Contact = () => {
       }
     } catch (err) {
       // Direct Fallback
-      const farmerPhone = '919421311949';
+      const farmerPhone = '919112355227';
       const waMsg = `🌿 *New Website Enquiry*\n\n👤 Name: ${formData.name}\n📞 Phone: ${formData.phone}\n✉️ Email: ${formData.email || 'None'}\n\n💬 Message:\n${formData.message}`;
       window.open(`https://wa.me/${farmerPhone}?text=${encodeURIComponent(waMsg)}`, '_blank');
       showToast(isMr ? '✅ मेसेज पाठवण्यासाठी व्हॉट्सअ‍ॅप उघडत आहे!' : '✅ Opening WhatsApp to send your enquiry!');
